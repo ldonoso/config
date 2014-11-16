@@ -1,0 +1,7 @@
+VIM INSTALLATION
+cd $home
+git clone https://github.com/ldonoso/varios
+soft link your vimrc
+     ln -s ~/varios/_vimrc ~/.vimrc
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+open vim and execute :BundleInstall
