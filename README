@@ -6,4 +6,3 @@ Installing vundle linux:
      linux: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
      windows: git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim
 open vim and execute :BundleInstall
-hola
