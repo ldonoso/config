@@ -49,6 +49,7 @@ filetype plugin indent on    " required
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
 set hlsearch
+set wildmode=longest,list
 
 colorscheme desert
 if has("gui_running")
