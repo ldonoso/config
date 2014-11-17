@@ -3,6 +3,6 @@ cd $home
 git clone https://github.com/ldonoso/varios
 Add the following line to the configuration file: source ~/varios/vimfiles/_vimrc
 Installing vundle linux:
-     linux: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+     linux: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
      windows: git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim
 open vim and execute :BundleInstall
