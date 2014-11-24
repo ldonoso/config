@@ -18,6 +18,9 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'scrooloose/nerdtree'
+if !win_shell
+    Plugin 'Valloric/YouCompleteMe'
+endif
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -49,7 +52,12 @@ filetype plugin indent on    " required
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
 set hlsearch
+set number
 set wildmode=longest,list
+
+if has("gui_running")
+    set guioptions -=T
+endif
 
 colorscheme desert
 if has("gui_running")
