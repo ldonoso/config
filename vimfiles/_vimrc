@@ -66,7 +66,7 @@ endif
 filetype plugin indent on
 set hidden
 
-" for ctags
-set autochdir " the working directory is always the one containing the current file.
-set tags=tags; " The last semicolon is the key here. When Vim tries to locate the 'tags' file, it first looks at the current directory, then the parent directory, and so on. This setting works nicely with 'set autochdir'
+" tags. One tag file per directory and a general one with the non-static definitions
+set tags=./.tags,.tags 
+map ,t :!(cd %:p:h;ctags -f .tags *)& 
 
