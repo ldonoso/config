@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-dispatch'
+Plugin 'majutsushi/tagbar'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -54,7 +55,7 @@ if has("gui_running")
     set guioptions -=T
 endif
 
-colorscheme desert
+colorscheme solarized
 if has("gui_running")
     if has("gui_win32")
         set guifont=Consolas:h10:cANSI
