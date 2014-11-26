@@ -33,3 +33,18 @@ Configure vim to read the local tag file first, then consult the global tag file
 The following Vim key mapping is quite useful to rebuild the tag file in the directory of the current source file:
     :nmap ,t :!(cd %:p:h;ctags -f .tags *)&
 
+# 256 colors terminal
+install ncurses-term
+
+Then set the term type in .bashrc with something like the following:
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
+# tmux
+Add the following line to ~/.tmux.conf so it reads our configuration: 
+source-file ~/varios/_tmux.conf
+
+# bashrc
+Add the following line to ~/.bashrc so it uses our configuration:
+source ~/varios/_bashrc

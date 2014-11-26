@@ -1,0 +1,5 @@
+set -o vi
+alias g='vim --remote-silent'
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
