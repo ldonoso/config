@@ -47,17 +47,21 @@ filetype plugin indent on    " required
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
-set hlsearch
 set number
 set wildmode=longest,list
+set mouse=a
+
+" Search stuff
+set incsearch hlsearch
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 if has("gui_running")
     set guioptions -=T
 endif
 
 let g:solarized_termcolors=256
-colorscheme solarized
 set background=dark
+colorscheme solarized
 if has("gui_running")
     if has("gui_win32")
         set guifont=Consolas:h10:cANSI

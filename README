@@ -43,3 +43,8 @@ source-file ~/varios/_tmux.conf
 # bashrc
 Add the following line to ~/.bashrc so it uses our configuration:
 source ~/varios/_bashrc
+
+# Swap caplocks and ctl
+www.emacswiki.org/emacs/MovingTheCtrlKey
+
+What it worked for me in Ubuntu 14.04.1 LTS was the http://www.emacswiki.org/emacs/MovingTheCtrlKey#toc9 
