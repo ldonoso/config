@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype off                  " required by bundle. Just temporally
 
 " set the runtime path to include Vundle and initialize
 let win_shell = (has('win32') || has('win64'))
@@ -19,6 +19,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'majutsushi/tagbar'
+Plugin 'nelstrom/vim-markdown-folding' 
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -34,9 +36,7 @@ Plugin 'majutsushi/tagbar'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -46,8 +46,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Encoding all in utf-8
+" Encoding stuff
 set encoding=utf-8
+set fileformats=unix,dos " New files will be encoded using unix line termination.
 
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
@@ -59,6 +60,7 @@ set cursorline
 
 " Search stuff
 set incsearch hlsearch
+set ignorecase smartcase
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 if has("gui_running")
@@ -79,7 +81,16 @@ endif
 filetype plugin indent on
 set hidden
 
-" tags. One tag file per directory and a general one with the non-static definitions
+" tags. One tag file per directory and a general one
+" in the working directory with the non-static definitions
 set tags=./.tags,.tags 
 map ,t :!(cd %:p:h;ctags -f .tags *)& 
+
+" Windows
+set splitright
+set splitbelow
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 

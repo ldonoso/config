@@ -1,9 +1,10 @@
 # VIM
+
 ## Installation
 cd $home
 Just Linux - Install the vim font: sudo apt-get install fonts-inconsolata
-git clone https://github.com/ldonoso/varios
-Add the following line to the configuration file: source ~/varios/vimfiles/_vimrc
+    git clone https://github.com/ldonoso/varios
+Add the following line to the configuration file: `source ~/varios/vimfiles/_vimrc`
 Installing vundle:
      linux: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
      windows: git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim
@@ -16,14 +17,17 @@ The advantages of this approach are many. All lookups of tag located in the curr
 
 ### Implementation
 Within each of the leaf nodes (i.e. hdrs, lib, src, test) build a tag file:
-    find * -type d -exec ~/varios/vimfiles/dirtags.sh {} \;
+    find ~/project -type d -exec ~/varios/vimfiles/dirtags.sh {} \;
 
 Build the global tag file, --file-scope=no indicates tags scoped only for a single file (static) shouldn't be included in the output: 
     cd ~/project
     ctags -f .tags --file-scope=no -R
+or to restrict the processed files:
+    ctags -f .tags --file-scope=no -R --languages=C,C++
 
 Configure vim to read the local tag file first, then consult the global tag file when not found in the local tag file:
-    :set tags=./tags,tags,~/project/tags 
+    :set tags=./.tags,.tags,~/project/.tags 
+You can add new routes to link to other projects
 
 The following Vim key mapping is quite useful to rebuild the tag file in the directory of the current source file:
     :nmap ,t :!(cd %:p:h;ctags -f .tags *)&
@@ -48,3 +52,10 @@ source ~/varios/_bashrc
 www.emacswiki.org/emacs/MovingTheCtrlKey
 
 What it worked for me in Ubuntu 14.04.1 LTS was the http://www.emacswiki.org/emacs/MovingTheCtrlKey#toc9 
+
+# Putty configuration
+To get to use 256 colours in putty:
+http://blog.sanctum.geek.nz/putty-configuration/
+
+You can tunne the colours used in the shell. For instance, the color for directories was unreadable so I change this in putty:
+Window > Colours > ANSI Blue
