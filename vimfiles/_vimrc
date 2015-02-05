@@ -78,7 +78,6 @@ if has("gui_running")
     endif
 endif
 
-filetype plugin indent on
 set hidden
 
 " tags. One tag file per directory and a general one
@@ -94,3 +93,11 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
+" Center the display line after searches. (This makes it *much* easier to see the matched line.)
+" More info: http://www.vim.org/tips/tip.php?tip_id=528
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz

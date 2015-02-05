@@ -32,6 +32,9 @@ You can add new routes to link to other projects
 The following Vim key mapping is quite useful to rebuild the tag file in the directory of the current source file:
     :nmap ,t :!(cd %:p:h;ctags -f .tags *)&
 
+Note: ctags doesn't indexes all kind of symbols (i.e. it doesn't index the local variables by default). You can see which kinds indexed with:
+    ctags --list-kinds=c++
+
 # 256 colors terminal
 install ncurses-term
 
