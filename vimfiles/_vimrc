@@ -14,12 +14,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'majutsushi/tagbar'
 Plugin 'nelstrom/vim-markdown-folding' 
+Plugin 'christoomey/vim-tmux-navigator' 
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'endel/vim-github-colorscheme'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -88,10 +92,6 @@ map ,t :!(cd %:p:h;ctags -f .tags *)&
 " Windows
 set splitright
 set splitbelow
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
 
 " Center the display line after searches. (This makes it *much* easier to see the matched line.)
 " More info: http://www.vim.org/tips/tip.php?tip_id=528
@@ -101,3 +101,10 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+" Enter command mode with one keystroke
+nnoremap ; :
+nnoremap : ;
+
+" Exit insert mode without using Esc
+inoremap jk <Esc> 
