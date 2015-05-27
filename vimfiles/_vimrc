@@ -68,6 +68,7 @@ if has("gui_running")
     set guioptions -=T
 endif
 
+set colorcolumn=100
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
@@ -103,5 +104,10 @@ nnoremap g# g#zz
 nnoremap ; :
 nnoremap : ;
 
-" Exit insert mode without using Esc
-inoremap jk <Esc> 
+" vimdiff colorscheme
+if &diff
+    colorscheme solarized
+endif
+
+" tagbar slowness
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn
