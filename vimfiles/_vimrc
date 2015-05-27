@@ -2,12 +2,10 @@ set nocompatible              " be iMproved, required
 filetype off                  " required by bundle. Just temporally
 
 " set the runtime path to include Vundle and initialize
-let win_shell = (has('win32') || has('win64'))
-let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
-let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
-call vundle#rc(expand(vimDir . '/bundle'))
 
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -21,7 +19,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'nelstrom/vim-markdown-folding' 
 Plugin 'christoomey/vim-tmux-navigator' 
-
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'endel/vim-github-colorscheme'
 
