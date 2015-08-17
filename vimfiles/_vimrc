@@ -22,6 +22,8 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'endel/vim-github-colorscheme'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -70,16 +72,10 @@ if has("gui_running")
 endif
 
 set colorcolumn=100
+" enable degraded color mode. This is needed only if you do not apply solarized colors to your terminal emulator.
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-if has("gui_running")
-    if has("gui_win32")
-        set guifont=Consolas:h10:cANSI
-    else
-        set guifont=Inconsolata\ 12
-    endif
-endif
 
 set hidden
 
@@ -107,8 +103,14 @@ nnoremap : ;
 
 " vimdiff colorscheme
 if &diff
-    colorscheme solarized
+    colorscheme github
 endif
 
 " tagbar slowness
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
+
+" Use silver searcher instead of ack 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Marex
+set makeprg=scons\ opt=debug,test
