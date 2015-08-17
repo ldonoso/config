@@ -1,0 +1,7 @@
+[alias]
+    lg1 = log --graph --oneline --decorate --date=relative --all
+    st = status -s
+
+[diff]
+    tool = vimdiff
+

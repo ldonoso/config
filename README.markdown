@@ -47,6 +47,11 @@ fi
 Add the following line to ~/.tmux.conf so it reads our configuration: 
 source-file ~/varios/_tmux.conf
 
+# Git
+Add to ~/.gitconfig
+    [include]
+        path = ~/varios/_gitconfig
+
 # bashrc
 Add the following line to ~/.bashrc so it uses our configuration:
 source ~/varios/_bashrc
