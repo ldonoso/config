@@ -3,7 +3,7 @@ filetype off                  " required by bundle. Just temporally
 
 " set the runtime path to include Vundle and initialize
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -20,10 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'nelstrom/vim-markdown-folding' 
 Plugin 'christoomey/vim-tmux-navigator' 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
