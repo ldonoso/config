@@ -62,7 +62,8 @@ set cursorline
 " Search stuff
 set incsearch hlsearch
 set ignorecase smartcase
-nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+" conflicts with tmux navigator
+" nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 if has("gui_running")
     set guioptions -=T
