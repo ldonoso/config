@@ -1,7 +1,14 @@
 [alias]
     lg1 = log --graph --oneline --decorate --date=relative --all
     st = status -s
+    d = difftool
 
 [diff]
     tool = vimdiff
 
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[mergetool]
+	prompt = false
