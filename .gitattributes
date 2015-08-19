@@ -1,0 +1,4 @@
+# Set line endings to LF, even on Windows this is because is gonna be used by git 
+* text eol=lf
+
+*.reg text eol=crlf
