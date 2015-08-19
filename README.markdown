@@ -5,9 +5,8 @@ cd $home
 Just Linux - Install the vim font: sudo apt-get install fonts-inconsolata
     git clone https://github.com/ldonoso/varios
 Add the following line to the configuration file: `source ~/varios/vimfiles/_vimrc`
-Installing vundle:
-     linux: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
-     windows: git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim
+Installing vundle (linux and linux, it doesn't matter the location of the directory .vim):
+     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 open vim and execute :BundleInstall
 
 ## How should I set up tag files for a multi-level directory hierarchy?
