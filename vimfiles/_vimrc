@@ -21,6 +21,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'nelstrom/vim-markdown-folding' 
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'mileszs/ack.vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -107,8 +108,10 @@ endif
 " tagbar slowness
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
-" Use silver searcher instead of ack 
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" Use silver searcher when available
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " Marex
 set makeprg=scons\ opt=debug,test
