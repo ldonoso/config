@@ -2,12 +2,13 @@ set nocompatible              " be iMproved, required
 filetype off                  " required by bundle. Just temporally
 
 " set the runtime path to include Vundle and initialize
-
-set rtp+=~/.vim/bundle/Vundle.vim
+" Note we use backslashes so it works in mingw64, git, and windows
+set rtp+=c:/Users/LDonosodeDios/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Note we use backslashes so it works in mingw64, git, and windows
+call vundle#begin('C:/Users/LDonosodeDios/.vim/bundle/')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -23,18 +24,6 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mileszs/ack.vim'
-
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
