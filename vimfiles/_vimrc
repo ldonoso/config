@@ -24,6 +24,7 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mileszs/ack.vim'
+Plugin 'ivanov/vim-ipython'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
