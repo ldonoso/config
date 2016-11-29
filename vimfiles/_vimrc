@@ -6,35 +6,29 @@ filetype off                  " required by bundle. Just temporally
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-vinegar'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'nelstrom/vim-markdown-folding' 
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'mileszs/ack.vim'
-
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'ivanov/vim-ipython'
+Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'idanarye/vim-merginal'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,7 +50,8 @@ set fileformats=unix,dos " New files will be encoded using unix line termination
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
-set number
+set number " So in the current line we see the global number instead of the relative one
+set relativenumber
 set wildmode=longest,list
 set mouse=a
 set cursorline
@@ -69,11 +64,13 @@ set ignorecase smartcase
 
 if has("gui_running")
     set guioptions -=T
+    set guifont=Consolas
 endif
 
 set colorcolumn=100
 " enable degraded color mode. This is needed only if you do not apply solarized colors to your terminal emulator.
 let g:solarized_termcolors=256
+let g:solarized_diffmode="high"
 set background=dark
 colorscheme solarized
 
@@ -88,6 +85,9 @@ map ,t :!(cd %:p:h;ctags -f .tags *)&
 set splitright
 set splitbelow
 
+" so airline is shown in just one window
+set laststatus=2
+
 " Center the display line after searches. (This makes it *much* easier to see the matched line.)
 " More info: http://www.vim.org/tips/tip.php?tip_id=528
 nnoremap n nzz
@@ -101,10 +101,21 @@ nnoremap g# g#zz
 nnoremap ; :
 nnoremap : ;
 
-" vimdiff colorscheme
-if &diff
-    colorscheme github
+set diffopt+=iwhite
+
+" function to use -w instead of -b when iwhite is set
+set diffexpr=DiffW()
+function DiffW()
+	let opt = ""
+	if &diffopt =~ "icase"
+		let opt = opt . "-i "
 endif
+	if &diffopt =~ "iwhite"
+		let opt = opt . "-w " " vim uses -b by default
+	endif
+	silent execute "!diff -a --binary " . opt .
+				\ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+endfunction
 
 " tagbar slowness
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
@@ -114,11 +125,27 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
+" supertab. It triggers the ipython tab-completion 
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
+" md files are markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Open a quickfix item in a new window
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
 " Marex
 set makeprg=scons\ opt=debug,test
 
-" Map leader remap
-let mapleader = "\<Space>"
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
