@@ -4,11 +4,10 @@ filetype off                  " required by bundle. Just temporally
 " set the runtime path to include Vundle and initialize
 " Note we use backslashes so it works in mingw64, git, and windows
 set rtp+=c:/Users/LDonosodeDios/.vim/bundle/Vundle.vim
-call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
 " Note we use backslashes so it works in mingw64, git, and windows
-call vundle#begin('C:/Users/LDonosodeDios/.vim/bundle/')
+call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
