@@ -7,9 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Pass a path where Vundle should install plugins
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
+Plugin 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
@@ -30,6 +28,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
