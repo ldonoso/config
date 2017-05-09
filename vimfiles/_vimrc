@@ -60,10 +60,11 @@ if has("gui_running")
 endif
 
 set colorcolumn=100
-" enable degraded color mode. This is needed only if you do not apply solarized colors to your terminal emulator.
+set background=dark
+
+" enable degraded color mode. Needed if you do not apply solarized colors to your terminal emu
 let g:solarized_termcolors=256
 let g:solarized_diffmode="high"
-set background=dark
 colorscheme solarized
 
 set hidden
