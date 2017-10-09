@@ -35,6 +35,8 @@ Plugin 'vim-scripts/BufOnly.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+:set directory=~/.vim/swapfiles//
+
 " Encoding stuff
 set encoding=utf-8
 set fileformats=unix,dos " New files will be encoded using unix line termination.
@@ -56,7 +58,7 @@ set ignorecase smartcase
 
 if has("gui_running")
     set guioptions -=T
-    set guifont=Consolas
+    set guifont=Consolas:h10
 endif
 
 set colorcolumn=100
