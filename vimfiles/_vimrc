@@ -38,6 +38,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 :set directory=~/.vim/swapfiles//
+:set autoread
 
 " Encoding stuff
 set encoding=utf-8
@@ -99,6 +100,7 @@ nnoremap ; :
 nnoremap : ;
 
 set diffopt+=iwhite
+set diffopt+=vertical
 
 " function to use -w instead of -b when iwhite is set
 set diffexpr=DiffW()
