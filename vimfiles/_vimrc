@@ -74,10 +74,17 @@ colorscheme solarized
 
 set hidden
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tags. One tag file per directory and a general one
 " in the working directory with the non-static definitions
-set tags=./.tags,.tags 
-map ,t :!(cd %:p:h;ctags -f .tags *)& 
+"
+set tags=./.tags,.tags  " Look for tags in current dir and in working dir
+" set tags=./.tags;  " Look for tags file dir upwards
+
+" Build the tag file in the dir of the current file
+nnoremap ,t :!(cd %:p:h; ctags -f .tags *)&
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Windows
 set splitright
