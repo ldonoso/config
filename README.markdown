@@ -63,9 +63,18 @@ Add the following line to ~/.tmux.conf so it reads our configuration:
 source-file ~/varios/_tmux.conf
 
 # Git
+
 Add to ~/.gitconfig
+
     [include]
         path = ~/varios/_gitconfig
+
+# ctags
+
+Add to ~/.ctags
+
+   --options=/home/luis.donoso/home_win/src/varios/_ctags
+
 
 # bashrc
 Add the following line to ~/.bashrc so it uses our configuration:
