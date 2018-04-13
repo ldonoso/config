@@ -28,6 +28,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'vim-scripts/a.vim'
 
 if has('python') || has('python3')
     Plugin 'davidhalter/jedi-vim'
@@ -37,7 +38,7 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-:set directory=~/.vim/swapfiles//
+" :set directory=~/.vim/swapfiles//
 :set autoread
 
 " Encoding stuff
