@@ -15,6 +15,8 @@ echo "--options=$SRC_DIR/_ctags" >> ~/.ctags
 
 echo "source $SRC_DIR/_bashrc" >> ~/.bashrc
 
+cat $SRC_DIR/_clang-format >> ~/.clang-format
+
 
 
 
