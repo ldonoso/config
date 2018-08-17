@@ -27,6 +27,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 if has('python') || has('python3')
     Plugin 'davidhalter/jedi-vim'

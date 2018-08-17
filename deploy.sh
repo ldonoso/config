@@ -17,6 +17,6 @@ echo "source $SRC_DIR/_bashrc" >> ~/.bashrc
 
 cat $SRC_DIR/_clang-format >> ~/.clang-format
 
-
+cat $SRC_DIR/_haskeline >> ~/.haskeline
 
 
