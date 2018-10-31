@@ -2,7 +2,7 @@
 
 script_full_path=$(dirname "$0")
 
-cd $1
+cd "$1"
 
 # Generate a tags file in every directory
 find . -type d -exec $script_full_path/dirtags.sh {} \;
