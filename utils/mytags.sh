@@ -1,8 +1,12 @@
 #!/bin/bash
 
-cd $1
+script_full_path=$(dirname "$0")
 
-find . -type d -exec ~/varios/utils/dirtags.sh {} \;
+cd "$1"
 
-ctags -f .tags --file-scope=no -R
+# Generate a tags file in every directory
+find . -type d -exec $script_full_path/dirtags.sh {} \;
+
+# Generate a global one
+ctags --exclude=.git --file-scope=no -R -f .tags 
 
