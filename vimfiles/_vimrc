@@ -180,6 +180,9 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
   \ contains=@'.group
 endfunction
 
+" calculator
+nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
+
 " fugitive git bindings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
