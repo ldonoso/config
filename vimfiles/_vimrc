@@ -11,12 +11,12 @@ Plugin 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'  " Must come before vim-markdown
+Plugin 'plasticboy/vim-markdown'
 Plugin 'idanarye/vim-merginal'
 Plugin 'ivanov/vim-ipython'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
-Plugin 'nelstrom/vim-markdown-folding' 
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
@@ -120,7 +120,7 @@ if executable('ag')
 endif
 
 " md files are markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
