@@ -19,5 +19,6 @@ cat $SRC_DIR/_clang-format >> ~/.clang-format
 
 cat $SRC_DIR/_haskeline >> ~/.haskeline
 
-
 cat $SRC_DIR/_ghci >> ~/.ghci
+
+cat $SRC_DIR/_inputrc >> ~/.inputrc
