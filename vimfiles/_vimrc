@@ -28,6 +28,7 @@ Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'will133/vim-dirdiff'
 
 if has('python') || has('python3')
     Plugin 'davidhalter/jedi-vim'
