@@ -1,3 +1,7 @@
+[user]
+    mail = luisantoniod@gmail.com
+    name = ldonoso
+
 [alias]
     lg = log --graph --oneline --decorate --date=relative --all
     st = status -s
@@ -10,11 +14,11 @@
     cmd = "vimdiff -c 'set diffopt+=iwhite' \"$REMOTE\" \"$LOCAL\""
 
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+    tool = vimdiff
+    conflictstyle = diff3
 
 [mergetool]
-	prompt = false
+    prompt = false
 
 [core]
     longpaths = true
