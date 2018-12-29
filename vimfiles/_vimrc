@@ -28,6 +28,7 @@ Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'will133/vim-dirdiff'
 
 if has('python') || has('python3')
     Plugin 'davidhalter/jedi-vim'
@@ -110,6 +111,7 @@ nnoremap : ;
 
 set diffopt+=iwhite
 set diffopt+=vertical
+set diffopt+=algorithm:histogram
 
 " tagbar slowness
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
@@ -185,3 +187,6 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 " XML folding
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+
+" markdown folding
+let g:vim_markdown_folding_style_pythonic = 1
