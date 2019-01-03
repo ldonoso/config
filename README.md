@@ -1,5 +1,12 @@
 # Setting up a local DEV environment
 
+## Deploy
+
+The script `deploy.h` sets the configuration of the local environment and tools. To run it:
+
+1. Set `SRC_DIR` in `deploy.sh` to the dir containing the repo.
+2. Run the script
+
 ## VIM
 
 ### Installation
@@ -70,36 +77,6 @@ Note: ctags doesn't indexes all kind of symbols (i.e. it doesn't index the local
 ## 256 colors terminal
 
 install ncurses-term
-
-Then set the term type in .bashrc with something like the following:
-if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-
-## tmux
-
-Add the following line to ~/.tmux.conf so it reads our configuration:
-
-    source-file ~/varios/_tmux.conf
-
-## git
-
-Add to ~/.gitconfig
-
-    [include]
-        path = ~/varios/_gitconfig
-
-## ctags
-
-Add to ~/.ctags:
-
-   --options=/home/luis.donoso/home_win/src/varios/_ctags
-
-## bashrc
-
-Add the following line to ~/.bashrc so it uses our configuration:
-
-    source ~/varios/_bashrc
 
 ## Swap caplocks and ctl
 
