@@ -63,7 +63,7 @@ set ignorecase smartcase
 
 if has("gui_running")
     set guioptions -=T
-    set guifont=Consolas:h10
+    set guifont=Consolas:h11
 endif
 
 set colorcolumn=100
