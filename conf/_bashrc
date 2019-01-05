@@ -1,0 +1,6 @@
+set -o vi
+export EDITOR=vim
+
+alias g='gvim --remote-silent'
+alias to_md='pandoc -t markdown_github --wrap=none --atx-headers'
+

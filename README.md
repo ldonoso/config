@@ -1,15 +1,39 @@
-# VIM
+# Setting up a local DEV environment
 
-## Installation
-cd $home
-Just Linux - Install the vim font: sudo apt-get install fonts-inconsolata
+## Deploy
+
+The script `deploy.h` sets the configuration of the local environment and tools. To run it:
+
+1. Set `SRC_DIR` in `deploy.sh` to the dir containing the repo.
+2. Run the script
+
+## VIM
+
+### Installation
+
+Clone this project:
+
+    mkdir -p ~/src
+    cd ~/src
     git clone https://github.com/ldonoso/varios
-Add the following line to the configuration file: `source ~/varios/vimfiles/_vimrc`
-Installing vundle (linux and linux, it doesn't matter the location of the directory .vim):
-     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
-open vim and execute :BundleInstall
 
-## Tags. Tags files per dir and one global
+Install vim:
+
+1. Just Linux. Install the font used in vim:
+
+        sudo apt-get install fonts-inconsolata
+
+2. Add the following line to the configuration file
+
+        source ~/varios/vimfiles/_vimrc
+
+3. Clone vundle
+
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
+
+4. Open vim and execute `:BundleInstall`
+
+### Tags. Tags files per dir and one global
 
 A local tag file in each directory containing only the tags for source files in that directory, in addition to one single global tag file present in the root directory of your hierarchy, containing all non-static tags present in all source files in the hierarchy.
 
@@ -21,13 +45,13 @@ The advantages of this approach are many:
 
 * The global tag file can be automatically regenerated periodically with a cron job.
 
-### Implementation
+#### Implementation
 
 Within each of the leaf nodes (i.e. hdrs, lib, src, test) build a tag file:
 
     find ~/project -type d -exec ~/varios/utils/dirtags.sh {} \;
 
-Build the global tag file, `--file-scope=no` indicates tags scoped only for a single file (static) shouldn't be included in the output: 
+Build the global tag file, `--file-scope=no` indicates tags scoped only for a single file (static) shouldn't be included in the output:
 
     cd ~/project
     ctags -f .tags --file-scope=no -R
@@ -38,7 +62,7 @@ or to restrict the processed files:
 
 Configure vim to read the local tag file first, then consult the global tag file when not found in the local tag file:
 
-    :set tags=./.tags,.tags,~/project/.tags 
+    :set tags=./.tags,.tags,~/project/.tags
 
 You can add new routes to link to other projects
 
@@ -50,44 +74,17 @@ Note: ctags doesn't indexes all kind of symbols (i.e. it doesn't index the local
 
     ctags --list-kinds=c++
 
-# 256 colors terminal
+## 256 colors terminal
+
 install ncurses-term
 
-Then set the term type in .bashrc with something like the following:
-if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
+## Swap caplocks and ctl
 
-# tmux
-Add the following line to ~/.tmux.conf so it reads our configuration: 
-source-file ~/varios/_tmux.conf
+[Moving the CTRL key](www.emacswiki.org/emacs/MovingTheCtrlKey)
 
-# Git
+## Putty configuration
 
-Add to ~/.gitconfig
-
-    [include]
-        path = ~/varios/_gitconfig
-
-# ctags
-
-Add to ~/.ctags
-
-   --options=/home/luis.donoso/home_win/src/varios/_ctags
-
-
-# bashrc
-Add the following line to ~/.bashrc so it uses our configuration:
-source ~/varios/_bashrc
-
-# Swap caplocks and ctl
-www.emacswiki.org/emacs/MovingTheCtrlKey
-
-What it worked for me in Ubuntu 14.04.1 LTS was the http://www.emacswiki.org/emacs/MovingTheCtrlKey#toc9 
-
-# Putty configuration
-To get to use 256 colours in putty:
-http://blog.sanctum.geek.nz/putty-configuration/
+[How get to use 256 colours in putty](http://blog.sanctum.geek.nz/putty-configuration/)
 
 You can tunne the colours used in the shell. For instance, the color for directories was unreadable so I change this in putty:
 Window > Colours > ANSI Blue
