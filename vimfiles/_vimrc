@@ -64,7 +64,7 @@ set ignorecase smartcase
 
 if has("gui_running")
     set guioptions -=T
-    set guifont=Consolas:h10
+    set guifont=Consolas:h11
 endif
 
 set colorcolumn=100
@@ -166,6 +166,9 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
   \ start="'.a:start.'" end="'.a:end.'"
   \ contains=@'.group
 endfunction
+
+" calculator
+nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
 " fugitive git bindings
 nnoremap <leader>gs :Gstatus<CR>
