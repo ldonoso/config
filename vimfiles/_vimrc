@@ -11,13 +11,13 @@ Plugin 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'  " Must come before vim-markdown
-Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'
 Plugin 'idanarye/vim-merginal'
 Plugin 'ivanov/vim-ipython'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
@@ -29,6 +29,7 @@ Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'will133/vim-dirdiff'
+Plugin 'kien/rainbow_parentheses.vim'
 
 if has('python') || has('python3')
     Plugin 'davidhalter/jedi-vim'
@@ -121,8 +122,9 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-" md files are markdown
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" tpope/vim-markdown
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = ['html', 'python', 'haskell']
 
 " Open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
@@ -190,6 +192,3 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 " XML folding
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
-
-" markdown folding
-let g:vim_markdown_folding_style_pythonic = 1
