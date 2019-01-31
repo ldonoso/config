@@ -70,10 +70,7 @@ endif
 set colorcolumn=100
 set background=dark
 
-" enable degraded color mode. Needed if you do not apply solarized colors to your terminal emu
-let g:solarized_termcolors=256
-let g:solarized_diffmode="high"
-colorscheme solarized
+colorscheme gruvbox
 
 set hidden
 
