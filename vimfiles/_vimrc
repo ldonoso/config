@@ -102,14 +102,13 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+nnoremap * *``
 
 " Enter command mode with one keystroke
 nnoremap ; :
 nnoremap : ;
 
-set diffopt+=iwhite
-set diffopt+=vertical
-set diffopt+=algorithm:histogram
+set diffopt+=vertical,algorithm:histogram
 
 " tagbar slowness
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
