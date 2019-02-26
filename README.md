@@ -1,41 +1,37 @@
-# Setting up a local DEV environment
+# Setting up the development environment
 
-## Deploy
+## Deploying
 
-The script `deploy.h` sets the configuration of the local environment and tools. To run it:
+1. Clone this project:
 
-1. Set `SRC_DIR` in `deploy.sh` to the dir containing the repo.
-2. Run the script
-
-## VIM
-
-### Installation
-
-Clone this project:
-
+    ``` shell
     mkdir -p ~/src
     cd ~/src
-    git clone https://github.com/ldonoso/varios
+    git clone git@github.com:ldonoso/config.git
+    ```
 
-Install vim:
+2. Install the font used in vim:
 
-1. Just Linux. Install the font used in vim:
-
-        sudo apt-get install fonts-inconsolata
-
-2. Add the following line to the configuration file
-
-        source ~/varios/vimfiles/_vimrc
+    ``` shell
+    sudo apt-get install fonts-inconsolata
+    ```
 
 3. Clone vundle
 
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
+    ``` shell
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
+    ```
 
 4. Open vim and execute `:BundleInstall`
 
-### Tags. Tags files per dir and one global
+5. The script `deploy.h` sets the configuration of the local environment and tools. To run it:
 
-A local tag file in each directory containing only the tags for source files in that directory, in addition to one single global tag file present in the root directory of your hierarchy, containing all non-static tags present in all source files in the hierarchy.
+    1. Set `SRC_DIR` in `deploy.sh` to the dir containing the repo.
+    2. Run the script
+
+## Tag files
+
+We'll have a local tag file in each directory containing only the tags for source files in that directory, in addition to one single global tag file present in the root directory of your hierarchy, containing all non-static tags present in all source files in the hierarchy.
 
 The advantages of this approach are many:
 
@@ -45,46 +41,43 @@ The advantages of this approach are many:
 
 * The global tag file can be automatically regenerated periodically with a cron job.
 
-#### Implementation
+### Implementation
 
 Within each of the leaf nodes (i.e. hdrs, lib, src, test) build a tag file:
 
-    find ~/project -type d -exec ~/varios/utils/dirtags.sh {} \;
+``` shell
+find ~/project -type d -exec ~/config/utils/dirtags.sh {} \;
+```
 
 Build the global tag file, `--file-scope=no` indicates tags scoped only for a single file (static) shouldn't be included in the output:
 
-    cd ~/project
-    ctags -f .tags --file-scope=no -R
+``` shell
+cd ~/project
+ctags -f .tags --file-scope=no -R
+```
 
 or to restrict the processed files:
 
-    ctags -f .tags --file-scope=no -R --languages=C,C++
+``` shell
+ctags -f .tags --file-scope=no -R --languages=C,C++
+```
 
 Configure vim to read the local tag file first, then consult the global tag file when not found in the local tag file:
 
-    :set tags=./.tags,.tags,~/project/.tags
+```
+:set tags=./.tags,.tags,~/project/.tags
+```
 
 You can add new routes to link to other projects
 
 The following Vim key mapping is quite useful to rebuild the tag file in the directory of the current source file:
 
-    :nnoremap ,t :!(cd %:p:h; ctags -f .tags *)&
+```
+:nnoremap ,t :!(cd %:p:h; ctags -f .tags *)&
+```
 
 Note: ctags doesn't indexes all kind of symbols (i.e. it doesn't index the local variables by default). You can see which entities are indexed with:
 
-    ctags --list-kinds=c++
-
-## 256 colors terminal
-
-install ncurses-term
-
-## Swap caplocks and ctl
-
-[Moving the CTRL key](www.emacswiki.org/emacs/MovingTheCtrlKey)
-
-## Putty configuration
-
-[How get to use 256 colours in putty](http://blog.sanctum.geek.nz/putty-configuration/)
-
-You can tunne the colours used in the shell. For instance, the color for directories was unreadable so I change this in putty:
-Window > Colours > ANSI Blue
+``` shell
+ctags --list-kinds=c++
+```
