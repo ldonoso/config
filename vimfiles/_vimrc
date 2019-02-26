@@ -27,11 +27,11 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'ujihisa/tabpagecolorscheme'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'will133/vim-dirdiff'
 Plugin 'kien/rainbow_parentheses.vim'
 
 if has('python') || has('python3')
+    Plugin 'Valloric/YouCompleteMe'
     Plugin 'davidhalter/jedi-vim'
 endif
 
@@ -40,7 +40,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " :set directory=~/.vim/swapfiles//
-:set autoread
+set autoread
+set hidden
 
 " Encoding stuff
 set encoding=utf-8
@@ -53,9 +54,7 @@ set relativenumber
 set wildmode=longest,list
 set mouse=a
 set cursorline
-if exists('belloff')
-    set belloff=all
-endif
+set belloff=all
 
 " Search stuff
 set incsearch hlsearch
@@ -70,10 +69,7 @@ endif
 
 set colorcolumn=100
 set background=dark
-
 colorscheme gruvbox
-
-set hidden
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tags. One tag file per directory and a general one
@@ -119,57 +115,22 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-" tpope/vim-markdown
-let g:markdown_folding = 1
-let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
-
 " Open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
-
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" Highlight of pieces of code
-" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
-"
-" To enable:
-" :call TextEnableCodeSnip('python', '@begin=python@', '@end=python@', 'SpecialComment')
-" :call TextEnableCodeSnip('python', '^    \ze\(\a\|>\)', '^\ze\w', 'SpecialComment')
-"
-" If highlighting gets out of sync
-" :syn sync fromstart
-function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
-  let ft=toupper(a:filetype)
-  let group='textGroup'.ft
-  if exists('b:current_syntax')
-    let s:current_syntax=b:current_syntax
-    " Remove current syntax definition, as some syntax files (e.g. cpp.vim)
-    " do nothing if b:current_syntax is defined.
-    unlet b:current_syntax
-  endif
-  execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
-  try
-    execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
-  catch
-  endtry
-  if exists('s:current_syntax')
-    let b:current_syntax=s:current_syntax
-  else
-    unlet b:current_syntax
-  endif
-  execute 'syntax region textSnip'.ft.'
-  \ matchgroup='.a:textSnipHl.'
-  \ start="'.a:start.'" end="'.a:end.'"
-  \ contains=@'.group
-endfunction
-
 " calculator
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
-" fugitive git bindings
+" tpope/vim-markdown
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
+
+" tpope/vim-fugitive
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>ga :Gcommit --amend<CR>
