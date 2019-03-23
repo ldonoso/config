@@ -16,3 +16,4 @@ cat $CONF_DIR/_clang-format >> ~/.clang-format
 cat $CONF_DIR/_haskeline >> ~/.haskeline
 cat $CONF_DIR/_ghci >> ~/.ghci
 cat $CONF_DIR/_inputrc >> ~/.inputrc
+cat $CONF_DIR/_mdlrc >> ~/.mdlrc
