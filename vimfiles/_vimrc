@@ -29,6 +29,7 @@ Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'will133/vim-dirdiff'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/syntastic'
 
 if has('python') || has('python3')
     Plugin 'Valloric/YouCompleteMe'
@@ -149,3 +150,14 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 " XML folding
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+
+
+" scrooloose/syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
