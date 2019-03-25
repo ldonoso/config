@@ -1,44 +1,65 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required by bundle. Just temporally
+call plug#begin('~/.vim/bundle')
+Plug 'christoomey/vim-tmux-navigator' 
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'godlygeek/tabular'
+Plug 'idanarye/vim-merginal'
+Plug 'ivanov/vim-ipython'
+Plug 'majutsushi/tagbar'
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " tagbar slowness
 
-" set the runtime path to include Vundle and initialize
-" Note we use slashes so it works in mingw64, git, and windows
-set rtp+=~/.vim/bundle/Vundle.vim
-" Pass a path where Vundle should install plugins
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
-Plugin 'christoomey/vim-tmux-navigator' 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'
-Plugin 'idanarye/vim-merginal'
-Plugin 'ivanov/vim-ipython'
-Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vinegar'
-Plugin 'ujihisa/tabpagecolorscheme'
-Plugin 'vim-scripts/BufOnly.vim'
-Plugin 'vim-scripts/a.vim'
-Plugin 'will133/vim-dirdiff'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'scrooloose/syntastic'
-
-if has('python') || has('python3')
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'davidhalter/jedi-vim'
+Plug 'mileszs/ack.vim'
+if executable('ag')  " Use silver searcher when available
+    let g:ackprg = 'ag --vimgrep'
 endif
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'tpope/vim-markdown'
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
+
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>ga :Gcommit --amend<CR>
+nnoremap <leader>gt :Gcommit -v -q %<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>
+nnoremap <leader>gp :Ggrep<Space>
+nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git pull<CR>
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'ujihisa/tabpagecolorscheme'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'will133/vim-dirdiff'
+Plug 'kien/rainbow_parentheses.vim'
+
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+if has('python') || has('python3')
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    Plug 'davidhalter/jedi-vim'
+endif
+call plug#end()
 
 " :set directory=~/.vim/swapfiles//
 set autoread
@@ -72,24 +93,17 @@ set colorcolumn=100
 set background=dark
 colorscheme gruvbox
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tags. One tag file per directory and a general one
 " in the working directory with the non-static definitions
-"
 set tags=./.tags,.tags  " Look for tags in current dir and in working dir
 " set tags=./.tags;  " Look for tags file dir upwards
 
 " Build the tag file in the dir of the current file
 nnoremap ,t :!(cd %:p:h; ctags -f .tags *)&
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Windows
 set splitright
 set splitbelow
-
-" so airline is shown in just one window
-set laststatus=2
 
 " Center the display line after searches. (This makes it *much* easier to see the matched line.)
 " More info: http://www.vim.org/tips/tip.php?tip_id=528
@@ -107,14 +121,6 @@ nnoremap : ;
 
 set diffopt+=vertical,algorithm:histogram
 
-" tagbar slowness
-autocmd FileType tagbar setlocal nocursorline nocursorcolumn
-
-" Use silver searcher when available
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-
 " Open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
@@ -126,38 +132,7 @@ nnoremap <silent> p p`]
 " calculator
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
-" tpope/vim-markdown
-let g:markdown_folding = 1
-let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
-
-" tpope/vim-fugitive
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>ga :Gcommit --amend<CR>
-nnoremap <leader>gt :Gcommit -v -q %<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>
-nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
-nnoremap <leader>gb :Git branch<Space>
-nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
-
 " XML folding
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
-
-
-" scrooloose/syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
