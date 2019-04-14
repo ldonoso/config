@@ -132,7 +132,11 @@ nnoremap <silent> p p`]
 " calculator
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
-" XML folding
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
+autocmd FileType xml setlocal foldmethod=syntax
 
