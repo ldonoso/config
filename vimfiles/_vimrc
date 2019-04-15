@@ -1,6 +1,8 @@
 call plug#begin('~/.vim/bundle')
 Plug 'christoomey/vim-tmux-navigator' 
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_working_path_mode = 0
+
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
@@ -77,6 +79,7 @@ set wildmode=longest,list
 set mouse=a
 set cursorline
 set belloff=all
+let g:netrw_list_hide= '.*\.swp$'
 
 " Search stuff
 set incsearch hlsearch
