@@ -125,7 +125,11 @@ nnoremap * *``
 nnoremap ; :
 nnoremap : ;
 
-set diffopt+=vertical,algorithm:histogram
+set diffopt+=vertical
+
+if has("patch-8.1.0360")
+    set diffopt+=algorithm:histogram
+endif
 
 " Open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
