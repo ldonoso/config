@@ -2,6 +2,10 @@ call plug#begin('~/.vim/bundle')
 Plug 'christoomey/vim-tmux-navigator' 
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = 0
+if executable('ag')
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+endif
 
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
@@ -26,7 +30,6 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>ga :Gcommit --amend<CR>
 nnoremap <leader>gt :Gcommit -v -q %<CR>
-nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gr :Gread<CR>
@@ -60,10 +63,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-if has('python') || has('python3')
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-    Plug 'davidhalter/jedi-vim'
-endif
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " :set directory=~/.vim/swapfiles//
