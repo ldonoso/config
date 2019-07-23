@@ -1,6 +1,6 @@
 set -x  # echo on
 
-SRC_DIR=~/src/varios
+SRC_DIR=~/src/config
 CONF_DIR=$SRC_DIR/conf
 
 echo "source $SRC_DIR/vimfiles/_vimrc" >> ~/.vimrc
