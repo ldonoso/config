@@ -23,6 +23,7 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-markdown'
 let g:markdown_folding = 1
 let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
+let g:markdown_syntax_conceal = 0
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
