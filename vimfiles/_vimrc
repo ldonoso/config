@@ -99,7 +99,8 @@ set ignorecase smartcase
 " nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 if has("gui_running")
-    set guioptions -=T
+    set guioptions-=m  " Remove menu bar
+    set guioptions-=T  " Remove toolbar
     set guifont=Consolas:h11
 endif
 
