@@ -64,7 +64,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["markdown"] }
-source gistfile1.vim
 
 if !has('win32')
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
