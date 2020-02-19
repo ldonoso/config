@@ -1,5 +1,0 @@
---exclude=.git
---exclude=CVS
-
---langmap=C++:+.inl
-

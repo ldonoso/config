@@ -1,4 +1,0 @@
-editMode: Vi
-bind: ^[ escape 
-historyDuplicates: IgnoreAll
-
