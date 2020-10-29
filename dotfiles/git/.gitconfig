@@ -22,6 +22,7 @@
 
 [core]
     longpaths = true
+    excludesFile  = ~/.gitignore
 
 [branch]
     autosetuprebase = always
