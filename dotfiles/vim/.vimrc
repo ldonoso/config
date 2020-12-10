@@ -27,24 +27,6 @@ let g:markdown_syntax_conceal = 0
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>ga :Gcommit --amend<CR>
-nnoremap <leader>gt :Gcommit -v -q %<CR>
-nnoremap <leader>gd :Gvdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>
-nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
-nnoremap <leader>gb :Git branch<Space>
-nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
-
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -66,7 +48,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["markdown"] }
 
 if !has('win32')
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 endif
 
 Plug 'davidhalter/jedi-vim'
@@ -91,6 +73,8 @@ set belloff=all
 set wildignore=*.o,*.obj,*.swp
 let g:netrw_hide=1  " Show not hidden files
 let g:netrw_list_hide= '.*\.swp$'
+
+let mapleader=" "
 
 " Search stuff
 set incsearch hlsearch
@@ -159,3 +143,19 @@ set foldlevel=2
 let g:xml_syntax_folding=1
 autocmd FileType xml setlocal foldmethod=syntax
 
+" remaps
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+nnoremap <leader>gtp :YcmCompleter GetType<CR>
+nnoremap <leader>gp :YcmCompleter GetParent<CR>
+nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>yd :YcmDiags<CR>
