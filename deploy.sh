@@ -1,6 +1,6 @@
 set -x  # echo on
 
-stow ./dotfiles -t ~ -S tmux bash clang ctags git haskell markdown_lint tmux vim
+stow -d ./dotfiles -t ~ -S tmux bash clang ctags git haskell markdown_lint tmux vim
 
 # stow ignores .gitignore
 ln -s -r ./dotfiles/git/.gitignore ~/.gitignore
