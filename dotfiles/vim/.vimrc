@@ -64,7 +64,7 @@ set fileformats=unix,dos " New files will be encoded using unix line termination
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
-set number " So in the current line we see the global number instead of the relative one
+set number " current line shows the global number
 set relativenumber
 set wildmode=longest,list
 set mouse=a
@@ -147,8 +147,6 @@ autocmd FileType xml setlocal foldmethod=syntax
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
 
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
