@@ -27,6 +27,7 @@ let g:markdown_syntax_conceal = 0
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -118,6 +119,8 @@ nnoremap * *``
 nnoremap ; :
 nnoremap : ;
 
+nnoremap <leader>tc :tabclose<CR>
+
 set diffopt+=vertical
 
 if has("patch-8.1.0360")
@@ -143,11 +146,12 @@ set foldlevel=2
 let g:xml_syntax_folding=1
 autocmd FileType xml setlocal foldmethod=syntax
 
-" remaps
+" vim-fugitive
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
 
+" ycm
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
 nnoremap <leader>gd :YcmCompleter GetDoc<CR>

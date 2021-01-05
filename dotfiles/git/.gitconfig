@@ -1,9 +1,9 @@
 [user]
-	name = ldonoso
+	name = Luis Donoso
     email = luisantoniod@gmail.com
 
 [alias]
-    lg = log --graph --oneline --decorate --date=relative --all
+    lg = log --decorate --oneline --graph
     st = status -s
     d = difftool
 
@@ -21,6 +21,7 @@
     prompt = false
 
 [core]
+    editor = vim
     longpaths = true
     excludesFile  = ~/.gitignore
 
