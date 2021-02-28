@@ -1,0 +1,43 @@
+[user]
+	name = Luis Donoso
+    email = luis.donoso@percona.com
+
+[core]
+    editor = vim
+    longpaths = true
+    excludesFile  = ~/.gitignore
+
+[branch]
+    autosetuprebase = always
+
+[commit]
+    verbose = true
+
+[log]
+    date = relative
+
+[alias]
+    lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s\"
+    st = status -s
+    d = difftool
+
+[diff]
+    tool = mydiff
+	algorithm = histogram
+
+[difftool "mydiff"]
+    cmd = "vimdiff -c 'set diffopt+=iwhite' \"$REMOTE\" \"$LOCAL\""
+
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+
+[mergetool]
+    prompt = false
+
+[mergetool "meld"]
+    # The default cmd shows $BASE in the middle
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+
+[mergetool "meldPlus"]
+    cmd = gitmerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"

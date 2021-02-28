@@ -8,6 +8,7 @@ if executable('ag')
 endif
 
 Plug 'flazz/vim-colorschemes'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
 Plug 'ivanov/vim-ipython'
@@ -32,6 +33,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/a.vim'
@@ -53,6 +55,7 @@ if !has('win32')
 endif
 
 Plug 'davidhalter/jedi-vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " :set directory=~/.vim/swapfiles//
@@ -65,6 +68,7 @@ set fileformats=unix,dos " New files will be encoded using unix line termination
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
+au BufRead,BufNewFile *.make setfiletype make
 set number " current line shows the global number
 set relativenumber
 set wildmode=longest,list
@@ -121,8 +125,7 @@ nnoremap : ;
 
 nnoremap <leader>tc :tabclose<CR>
 
-set diffopt+=vertical
-
+set diffopt+=vertical,indent-heuristic
 if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram
 endif
@@ -160,4 +163,8 @@ nnoremap <leader>gp :YcmCompleter GetParent<CR>
 nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>yd :YcmDiags<CR>
+
+noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
+let g:clang_format_fallback_style = 'none' 
