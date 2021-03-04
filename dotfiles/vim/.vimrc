@@ -37,6 +37,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'AndrewRadev/linediff.vim'
 
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#

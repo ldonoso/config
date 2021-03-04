@@ -8,10 +8,7 @@
     d = difftool
 
 [diff]
-    tool = mydiff
-
-[difftool "mydiff"]
-    cmd = "vimdiff -c 'set diffopt+=iwhite' \"$REMOTE\" \"$LOCAL\""
+    tool = vimdiff
 
 [merge]
     tool = vimdiff
