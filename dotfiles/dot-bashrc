@@ -1,8 +1,24 @@
 PS1='\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 
 check-format() {
-    local base_commit=${1:?"Usage: $0 <BASE_COMMIT>"}
+    local base_commit=${1:?"Usage: ${FUNCNAME[0]} <BASE_COMMIT>"}
 
     git diff -U0 --no-color $base_commit -- *.c *.cc *.cpp *.h *.hpp *.i *.ic *.ih \
     | clang-format-diff-10 -binary=clang-format-10 -style=file -p1
+}
+
+fix-format() {
+    local base_commit=${1:?"Usage: ${FUNCNAME[0]} <BASE_COMMIT>"}
+
+    git diff -U0 --no-color $base_commit -- *.c *.cc *.cpp *.h *.hpp *.i *.ic *.ih \
+    | clang-format-diff-10 -binary=clang-format-10 -style=file -p1 -i
+}
+
+get-gca() {
+    local lower_base_branch=${1:?"Usage: ${FUNCNAME[0]} <LOWER_BASE_BRANCH>"}
+    local higher_branch=${2:?"Usage: ${FUNCNAME[0]} <HIGHER_BRANCH>"}
+
+    gca_rev=$(git rev-list "$lower_base_branch" ^"$higher_branch" --first-parent --topo-order | tail -1)^
+    git rev-parse $gca_rev
+    echo $(git show `git rev-list $lower_base_branch ^$higher_branch --first-parent --topo-order | tail -1`^) 
 }
