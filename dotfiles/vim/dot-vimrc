@@ -126,6 +126,11 @@ nnoremap : ;
 
 nnoremap <leader>tc :tabclose<CR>
 
+" Line highlight
+nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
+nnoremap <silent> <leader>c :call clearmatches()<CR>
+
+
 set diffopt+=vertical,indent-heuristic
 if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram
