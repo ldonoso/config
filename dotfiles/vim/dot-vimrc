@@ -36,11 +36,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/a.vim'
 Plug 'will133/vim-dirdiff'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'AndrewRadev/linediff.vim'
-
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -156,7 +154,7 @@ let g:xml_syntax_folding=1
 autocmd FileType xml setlocal foldmethod=syntax
 
 " vim-fugitive
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
 
