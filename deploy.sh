@@ -1,23 +1,9 @@
 set -x  # echo on
 
-SRC_DIR=~/src/config
-CONF_DIR=$SRC_DIR/conf
+stow --dir=$HOME/src/config/dotfiles --target=$HOME --dotfiles --stow bash clang ctags git haskell markdown_lint tmux vim mysql
 
-echo "source $SRC_DIR/vimfiles/_vimrc" >> ~/.vimrc
+# We do not want too overwrite the currnt .bashrc
+echo "source $HOME/src/config/dotfiles/dot-bashrc" >> $HOME/.bashrc
+
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim -c PlugUpdate
-
-printf "[include]\n\tpath = $CONF_DIR/_gitconfig" >> ~/.gitconfig
-cat $CONF_DIR/_gitignore >> ~/.gitignore
-
-echo "source-file $CONF_DIR/_tmux.conf" >> ~/.tmux.conf
-echo "--options=$CONF_DIR/_ctags" >> ~/.ctags
-echo "source $CONF_DIR/_bashrc" >> ~/.bashrc
-cat $CONF_DIR/_clang-format >> ~/.clang-format
-cat $CONF_DIR/_haskeline >> ~/.haskeline
-
-cat $CONF_DIR/_ghci >> ~/.ghci
-chmod 644 ~/.ghci  # Requires go don't have write access
-
-cat $CONF_DIR/_inputrc >> ~/.inputrc
-cat $CONF_DIR/_mdlrc >> ~/.mdlrc
