@@ -8,5 +8,5 @@ cd "$1"
 find . -type d -exec $script_full_path/dirtags.sh {} \;
 
 # Generate a global one
-ctags --exclude=.git --file-scope=no -R -f .tags 
+ctags --languages='C++' --exclude=.git --file-scope=no -R -f .tags 
 
