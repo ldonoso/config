@@ -181,9 +181,12 @@ function! OpenURLUnderCursor()
     let s:uri = substitute(s:uri, '?', '\\?', '')
     let s:uri = shellescape(s:uri, 1)
     if s:uri != ''
-        silent exec "!gio '".s:uri."'"
+        silent exec "!gio open '".s:uri."'"
         :redraw!
     endif
 endfunction
 
 nnoremap gx :call OpenURLUnderCursor()<CR>
+
+" Run command under cursor in terminal below
+nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
