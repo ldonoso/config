@@ -19,11 +19,10 @@
 [alias]
     lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s\"
     st = status -s
-    d = difftool
 
 [diff]
     tool = vimdiff
-	algorithm = histogram
+    algorithm = histogram
 
 [merge]
     tool = vimdiff

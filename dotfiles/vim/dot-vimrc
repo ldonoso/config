@@ -36,7 +36,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/a.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'AndrewRadev/linediff.vim'
@@ -153,9 +152,10 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 let g:xml_syntax_folding=1
-autocmd FileType xml setlocal foldmethod=syntax
+autocmd FileType xml set foldmethod=syntax
+autocmd FileType git set foldmethod=syntax
 
-" vim-fugitive
+" fugitive
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
