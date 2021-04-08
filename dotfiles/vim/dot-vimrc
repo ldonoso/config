@@ -151,9 +151,10 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 let g:xml_syntax_folding=1
-autocmd FileType xml setlocal foldmethod=syntax
+autocmd FileType xml set foldmethod=syntax
+autocmd FileType git set foldmethod=syntax
 
-" vim-fugitive
+" fugitive
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
@@ -172,3 +173,19 @@ nnoremap <leader>yd :YcmDiags<CR>
 
 noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 let g:clang_format_fallback_style = 'none' 
+
+" Workaround till gx is solved
+function! OpenURLUnderCursor()
+    let s:uri = expand('<cWORD>')
+    let s:uri = substitute(s:uri, '?', '\\?', '')
+    let s:uri = shellescape(s:uri, 1)
+    if s:uri != ''
+        silent exec "!gio open '".s:uri."'"
+        :redraw!
+    endif
+endfunction
+
+nnoremap gx :call OpenURLUnderCursor()<CR>
+
+" Run command under cursor in terminal below
+nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
