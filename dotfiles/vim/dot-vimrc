@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/bundle')
-Plug 'christoomey/vim-tmux-navigator' 
+
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = 0
 if executable('ag')
@@ -51,6 +51,22 @@ let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["markdown"]
 
 if !has('win32')
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+    nnoremap <leader>gt :YcmCompleter GoTo<CR>
+    nnoremap <leader>fi :YcmCompleter FixIt<CR>
+    nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+    nnoremap <leader>gtp :YcmCompleter GetType<CR>
+    nnoremap <leader>gp :YcmCompleter GetParent<CR>
+    nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
+    nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+    nnoremap <leader>yd :YcmDiags<CR>
+
+    Plug 'christoomey/vim-tmux-navigator' 
+    tnoremap <silent> <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
+    tnoremap <silent> <C-j> <C-\><C-n>:TmuxNavigateDown<CR>
+    tnoremap <silent> <C-k> <C-\><C-n>:TmuxNavigateUp<CR>
+    tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
 endif
 
 Plug 'davidhalter/jedi-vim'
@@ -83,8 +99,6 @@ let mapleader=" "
 " Search stuff
 set incsearch hlsearch
 set ignorecase smartcase
-" conflicts with tmux navigator
-" nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 if has("gui_running")
     set guioptions-=m  " Remove menu bar
@@ -126,8 +140,7 @@ nnoremap <leader>tc :tabclose<CR>
 
 " Line highlight
 nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
-nnoremap <silent> <leader>c :call clearmatches()<CR>
-
+nnoremap <silent> <leader>c :nohlsearch<CR>:call clearmatches()<CR>
 
 set diffopt+=vertical,indent-heuristic
 if has("patch-8.1.0360")
@@ -145,6 +158,9 @@ nnoremap <silent> p p`]
 " calculator
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
+" Run command under cursor in terminal below
+nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
+
 " folding
 set foldmethod=indent
 set foldnestmax=10
@@ -159,33 +175,48 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
 
-" ycm
-nnoremap <leader>gt :YcmCompleter GoTo<CR>
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
-nnoremap <leader>gd :YcmCompleter GetDoc<CR>
-nnoremap <leader>gtp :YcmCompleter GetType<CR>
-nnoremap <leader>gp :YcmCompleter GetParent<CR>
-nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
-nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>yd :YcmDiags<CR>
+"" Workaround till this mapping is included in fugitive
+function DiffCurrentQuickfixEntry() abort
+	cc
+	let qf = getqflist({'context': 0, 'idx': 0})
+	if get(qf, 'idx') && type(get(qf, 'context')) == type({}) && type(get(qf.context, 'items')) == type([])
+		let diff = get(qf.context.items[qf.idx - 1], 'diff', [])
+		for i in reverse(range(len(diff)))
+			exe (i ? 'rightbelow' : 'leftabove') 'vert diffsplit' fnameescape(diff[i].filename)
+			wincmd p
+		endfor
+	endif
+endfunction
+
+nnoremap <leader>dd :call DiffCurrentQuickfixEntry()<CR>
+
+nnoremap <silent> <C-W>T :tab split<CR>
 
 noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 let g:clang_format_fallback_style = 'none' 
 
 " Workaround till gx is solved
-function! OpenURLUnderCursor()
-    let s:uri = expand('<cWORD>')
-    let s:uri = substitute(s:uri, '?', '\\?', '')
-    let s:uri = shellescape(s:uri, 1)
-    if s:uri != ''
-        silent exec "!gio open '".s:uri."'"
-        :redraw!
-    endif
-endfunction
+if !has('win32')
+    function! OpenURLUnderCursor()
+        let s:uri = expand('<cWORD>')
+        let s:uri = substitute(s:uri, '?', '\\?', '')
+        let s:uri = shellescape(s:uri, 1)
+        if s:uri != ''
+            silent exec "!gio open '".s:uri."'"
+            :redraw!
+        endif
+    endfunction
 
-nnoremap gx :call OpenURLUnderCursor()<CR>
+    nnoremap gx :call OpenURLUnderCursor()<CR>
+endif
 
-" Run command under cursor in terminal below
-nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
+" termdebug
+if !has('win32')
+    " https://gavinhoward.com/2020/12/my-development-environment-and-how-i-got-there/
+    packadd termdebug
+    let g:termdebug_wide = 1
+    nnoremap <F5> :Continue<CR>
+    nnoremap <F1> :Over<CR>
+    nnoremap <F2> :Step<CR>
+    nnoremap <S-F2> :Finish<CR>
+endif
