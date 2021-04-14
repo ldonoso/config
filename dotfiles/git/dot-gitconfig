@@ -6,6 +6,13 @@
     editor = vim
     longpaths = true
     excludesFile  = ~/.gitignore
+    commitGraph = true
+
+[gc]
+    writeCommitGraph = true
+
+[fetch]
+    writeCommitGraph = true
 
 [branch]
     autosetuprebase = always
