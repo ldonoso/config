@@ -1,3 +1,5 @@
+let mapleader=" "
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -63,10 +65,10 @@ if !has('win32')
     nnoremap <leader>yd :YcmDiags<CR>
 
     Plug 'christoomey/vim-tmux-navigator' 
-    tnoremap <silent> <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
-    tnoremap <silent> <C-j> <C-\><C-n>:TmuxNavigateDown<CR>
-    tnoremap <silent> <C-k> <C-\><C-n>:TmuxNavigateUp<CR>
-    tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
+    tnoremap <silent> <C-h> <C-W>:TmuxNavigateLeft<CR>
+    tnoremap <silent> <C-j> <C-W>:TmuxNavigateDown<CR>
+    tnoremap <silent> <C-k> <C-W>:TmuxNavigateUp<CR>
+    tnoremap <silent> <C-l> <C-W>:TmuxNavigateRight<CR>
 endif
 
 Plug 'davidhalter/jedi-vim'
@@ -93,8 +95,6 @@ set belloff=all
 set wildignore=*.o,*.obj,*.swp
 let g:netrw_hide=1  " Show not hidden files
 let g:netrw_list_hide= '.*\.swp$'
-
-let mapleader=" "
 
 " Search stuff
 set incsearch hlsearch
@@ -177,15 +177,15 @@ nnoremap <leader>ge :Gedit<CR>
 
 "" Workaround till this mapping is included in fugitive
 function DiffCurrentQuickfixEntry() abort
-	cc
-	let qf = getqflist({'context': 0, 'idx': 0})
-	if get(qf, 'idx') && type(get(qf, 'context')) == type({}) && type(get(qf.context, 'items')) == type([])
-		let diff = get(qf.context.items[qf.idx - 1], 'diff', [])
-		for i in reverse(range(len(diff)))
-			exe (i ? 'rightbelow' : 'leftabove') 'vert diffsplit' fnameescape(diff[i].filename)
-			wincmd p
-		endfor
-	endif
+    cc
+    let qf = getqflist({'context': 0, 'idx': 0})
+    if get(qf, 'idx') && type(get(qf, 'context')) == type({}) && type(get(qf.context, 'items')) == type([])
+	let diff = get(qf.context.items[qf.idx - 1], 'diff', [])
+	for i in reverse(range(len(diff)))
+	    exe (i ? 'rightbelow' : 'leftabove') 'vert diffsplit' fnameescape(diff[i].filename)
+	    wincmd p
+	endfor
+    endif
 endfunction
 
 nnoremap <leader>dd :call DiffCurrentQuickfixEntry()<CR>
