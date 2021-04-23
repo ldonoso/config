@@ -30,6 +30,9 @@ let g:markdown_syntax_conceal = 0
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -40,6 +43,9 @@ Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'AndrewRadev/linediff.vim'
+" Line diff between two diff markers
+noremap <silent> <leader>co jV]nk:Linediff<CR>]njV]nk:Linediff
+
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -136,6 +142,7 @@ nnoremap ; :
 nnoremap : ;
 
 nnoremap <leader>tc :tabclose<CR>
+nnoremap <silent> <C-W>T :tab split<CR>
 
 " Line highlight
 nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
@@ -160,6 +167,7 @@ nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 " Run command under cursor in terminal below
 nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
 
+
 " folding
 set foldmethod=indent
 set foldnestmax=10
@@ -168,11 +176,6 @@ set foldlevel=2
 let g:xml_syntax_folding=1
 autocmd FileType xml set foldmethod=syntax
 autocmd FileType git set foldmethod=syntax
-
-" fugitive
-nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gd :Gvdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
 
 "" Workaround till this mapping is included in fugitive
 function DiffCurrentQuickfixEntry() abort
@@ -188,8 +191,6 @@ function DiffCurrentQuickfixEntry() abort
 endfunction
 
 nnoremap <leader>dd :call DiffCurrentQuickfixEntry()<CR>
-
-nnoremap <silent> <C-W>T :tab split<CR>
 
 noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 let g:clang_format_fallback_style = 'none' 
