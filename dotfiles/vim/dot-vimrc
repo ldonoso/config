@@ -39,7 +39,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'will133/vim-dirdiff'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
@@ -63,13 +62,13 @@ if !has('win32')
     nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
     nnoremap <leader>yd :YcmDiags<CR>
-
-    Plug 'christoomey/vim-tmux-navigator' 
-    tnoremap <silent> <C-h> <C-W>:TmuxNavigateLeft<CR>
-    tnoremap <silent> <C-j> <C-W>:TmuxNavigateDown<CR>
-    tnoremap <silent> <C-k> <C-W>:TmuxNavigateUp<CR>
-    tnoremap <silent> <C-l> <C-W>:TmuxNavigateRight<CR>
 endif
+
+Plug 'christoomey/vim-tmux-navigator' 
+tnoremap <silent> <C-h> <C-W>:TmuxNavigateLeft<CR>
+tnoremap <silent> <C-j> <C-W>:TmuxNavigateDown<CR>
+tnoremap <silent> <C-k> <C-W>:TmuxNavigateUp<CR>
+tnoremap <silent> <C-l> <C-W>:TmuxNavigateRight<CR>
 
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline'
