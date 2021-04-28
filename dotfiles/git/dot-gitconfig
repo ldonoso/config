@@ -30,6 +30,7 @@
 [diff]
     tool = vimdiff
     algorithm = histogram
+    colorMoved = default
 
 [merge]
     tool = vimdiff
