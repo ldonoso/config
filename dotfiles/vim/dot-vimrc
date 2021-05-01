@@ -15,14 +15,15 @@ Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
 Plug 'ivanov/vim-ipython'
 Plug 'majutsushi/tagbar'
-autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " tagbar slowness
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " address tagbar slowness
 
 Plug 'mileszs/ack.vim'
 if executable('ag')  " Use silver searcher when available
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep --skip-vcs-ignores'
 endif
 
 Plug 'nelstrom/vim-visual-star-search'
+
 Plug 'tpope/vim-markdown'
 let g:markdown_folding = 1
 let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
@@ -42,9 +43,10 @@ Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'will133/vim-dirdiff'
+
 Plug 'AndrewRadev/linediff.vim'
 " Line diff between two diff markers
-noremap <silent> <leader>co jV]nk:Linediff<CR>]njV]nk:Linediff
+nmap <silent> <leader>ld jV]nk:Linediff<CR>]njV]nk:Linediff<CR>
 
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#

@@ -27,6 +27,9 @@
     lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s\"
     st = status -s
 
+[status]
+    submoduleSummary = 1
+
 [diff]
     tool = vimdiff
     algorithm = histogram
