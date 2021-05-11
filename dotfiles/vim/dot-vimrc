@@ -167,7 +167,7 @@ nnoremap <silent> p p`]
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
 " Run command under cursor in terminal below
-nnoremap <leader>r ^y$<C-W>j<C-W>""<CR><C-W>kj
+nnoremap <leader>r ^y$<C-W>b<C-W>""<CR><C-W>pj
 
 
 " folding

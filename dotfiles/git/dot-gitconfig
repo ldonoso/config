@@ -35,6 +35,10 @@
     algorithm = histogram
     colorMoved = default
 
+[difftool]
+    # Be able to abort all diffs with `:cq`
+    trustExitCode = true
+
 [merge]
     tool = vimdiff
     conflictstyle = diff3

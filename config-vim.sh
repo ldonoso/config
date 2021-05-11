@@ -5,8 +5,7 @@ cd ~/src/vim
 
 ./configure \
     --enable-multibyte \
-    --enable-python3interp \
-    --with-python3-config-dir=/usr/lib/python3.8/config-3.8-x86_64-linux-gnu \
+    --enable-python3interp=yes \
     --with-features=huge \
     --enable-largefile \
     --disable-netbeans \
