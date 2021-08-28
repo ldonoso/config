@@ -15,7 +15,7 @@ Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
 Plug 'ivanov/vim-ipython'
 Plug 'majutsushi/tagbar'
-autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " address tagbar slowness
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slowness
 
 Plug 'mileszs/ack.vim'
 if executable('ag')  " Use silver searcher when available
@@ -84,7 +84,7 @@ call plug#end()
 
 " :set directory=~/.vim/swapfiles//
 set autoread
-set hidden
+set hidden  " switch between buffers without saving
 
 " Encoding stuff
 set encoding=utf-8
@@ -100,7 +100,7 @@ set mouse=a
 set cursorline
 set belloff=all
 set wildignore=*.o,*.obj,*.swp
-let g:netrw_hide=1  " Show not hidden files
+let g:netrw_hide=1  " not show hidden files
 let g:netrw_list_hide= '.*\.swp$'
 
 " Search stuff
@@ -143,6 +143,10 @@ nnoremap * *``
 nnoremap ; :
 nnoremap : ;
 
+noremap <leader>y "+y
+noremap <leader>p "+p
+set backspace=indent,eol,start  " backspace behave like you expect and go through everything
+
 nnoremap <leader>tc :tabclose<CR>
 nnoremap <silent> <C-W>T :tab split<CR>
 
@@ -168,7 +172,6 @@ nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 
 " Run command under cursor in terminal below
 nnoremap <leader>r ^y$<C-W>b<C-W>""<CR><C-W>pj
-
 
 " folding
 set foldmethod=indent
