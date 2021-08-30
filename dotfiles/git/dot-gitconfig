@@ -8,9 +8,6 @@
     excludesFile  = ~/.gitignore
     commitGraph = true
 
-[gc]
-    writeCommitGraph = true
-
 [fetch]
     writeCommitGraph = true
 
@@ -54,3 +51,6 @@
 
 [mergetool "meldPlus"]
     cmd = gitmerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+
+[pull]
+    rebase = preserve
