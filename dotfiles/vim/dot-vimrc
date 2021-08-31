@@ -34,7 +34,7 @@ Plug 'tpope/vim-fugitive'
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-rhubarb'  " GBrowse github
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -45,7 +45,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'will133/vim-dirdiff'
 
 Plug 'AndrewRadev/linediff.vim'
-" Line diff between two diff markers
+" line diff between two diff markers
 nmap <silent> <leader>ld jV]nk:Linediff<CR>]njV]nk:Linediff<CR>
 
 Plug 'vim-syntastic/syntastic'
@@ -150,7 +150,7 @@ set backspace=indent,eol,start  " backspace behave like you expect and go throug
 nnoremap <leader>tc :tabclose<CR>
 nnoremap <silent> <C-W>T :tab split<CR>
 
-" Line highlight
+" line highlight
 nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
 nnoremap <silent> <leader>c :nohlsearch<CR>:call clearmatches()<CR>
 
@@ -159,10 +159,10 @@ if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram
 endif
 
-" Open a quickfix item in a new window
+" open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
-" Automatically jump to end of text you pasted
+" automatically jump to end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
@@ -182,21 +182,7 @@ let g:xml_syntax_folding=1
 autocmd FileType xml set foldmethod=syntax
 autocmd FileType git set foldmethod=syntax
 
-"" Workaround till this mapping is included in fugitive
-function DiffCurrentQuickfixEntry() abort
-    cc
-    let qf = getqflist({'context': 0, 'idx': 0})
-    if get(qf, 'idx') && type(get(qf, 'context')) == type({}) && type(get(qf.context, 'items')) == type([])
-	let diff = get(qf.context.items[qf.idx - 1], 'diff', [])
-	for i in reverse(range(len(diff)))
-	    exe (i ? 'rightbelow' : 'leftabove') 'vert diffsplit' fnameescape(diff[i].filename)
-	    wincmd p
-	endfor
-    endif
-endfunction
-
-nnoremap <leader>dd :call DiffCurrentQuickfixEntry()<CR>
-
+" clang format
 noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 let g:clang_format_fallback_style = 'none' 
 
