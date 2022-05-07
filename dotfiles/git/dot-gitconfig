@@ -8,6 +8,9 @@
     excludesFile  = ~/.gitignore
     commitGraph = true
 
+[gc]
+    writeCommitGraph = true
+
 [fetch]
     writeCommitGraph = true
 
@@ -40,7 +43,7 @@
 
 [merge]
     tool = vimdiff
-    conflictstyle = diff3
+    conflictStyle = zdiff3
 
 [mergetool]
     prompt = false
@@ -53,4 +56,4 @@
     cmd = gitmerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [pull]
-    rebase = preserve
+    rebase = merges

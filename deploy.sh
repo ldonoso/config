@@ -1,6 +1,6 @@
 set -x  # echo on
 
-stow --dir=$HOME/src/config/dotfiles --target=$HOME --dotfiles --stow bash clang ctags git haskell markdown_lint tmux vim mysql
+stow --dir=$HOME/src/config/dotfiles --target=$HOME --dotfiles --stow bash clang ctags git haskell markdown_lint mysql tmux vim
 
 # Do not overwrite .bashrc
 echo "source $HOME/src/config/dotfiles/dot-bashrc" >> $HOME/.bashrc
