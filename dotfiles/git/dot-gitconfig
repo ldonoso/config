@@ -57,3 +57,6 @@
 
 [pull]
     rebase = merges
+
+[rerere]
+    enabled = true

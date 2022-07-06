@@ -21,15 +21,17 @@ autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slown
 
 Plug 'mileszs/ack.vim'
 if executable('ag')  " Use silver searcher when available
-    let g:ackprg = 'ag --vimgrep --skip-vcs-ignores'
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " --skip-vcs-ignores
+    let g:ackprg = 'ag --vimgrep'
+
+    " Search selected text
+    vnoremap <leader>s y:Ack! -Q '<C-R>"'<CR>
 endif
 
 Plug 'nelstrom/vim-visual-star-search'
-
-Plug 'tpope/vim-markdown'
-let g:markdown_folding = 1
-let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
-let g:markdown_syntax_conceal = 0
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -68,17 +70,20 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['markdown']
 Plug 'davidhalter/jedi-vim'
 
 if !has('win32')
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-    nnoremap <leader>gt :YcmCompleter GoTo<CR>
-    nnoremap <leader>fi :YcmCompleter FixIt<CR>
-    nnoremap <leader>gd :YcmCompleter GetDoc<CR>
-    nnoremap <leader>gtp :YcmCompleter GetType<CR>
-    nnoremap <leader>gp :YcmCompleter GetParent<CR>
-    nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
-    nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
-    nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
-    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-    nnoremap <leader>yd :YcmDiags<CR>
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
+" let g:loaded_youcompleteme = 0
+let g:ycm_auto_hover = ''  " Popup is not automatically displayed
+" nnoremap <leader>md <plug>(YCMHover)
+nnoremap <leader>mt :YcmCompleter GoTo<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+" nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+" nnoremap <leader>gtp :YcmCompleter GetType<CR>
+" nnoremap <leader>gp :YcmCompleter GetParent<CR>
+" nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
+" nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+" nnoremap <leader>yd :YcmDiags<CR>
 endif
 
 Plug 'lyuts/vim-rtags'
@@ -110,15 +115,17 @@ set number " current line shows the global number
 set relativenumber
 set wildmode=longest,list
 set mouse=a
-set cursorline
+set cursorline  " highlight current line
 set belloff=all
 set wildignore=*.o,*.obj,*.swp
 let g:netrw_hide=1  " not show hidden files
 let g:netrw_list_hide= '.*\.swp$'
+let g:netrw_preview   = 1  " Make vertical splitting the default for previewing files
+"let g:netrw_liststyle = 3  " Make the default listing style "tree"
+let g:netrw_winsize   = 30  " When a vertical preview window is opened, the directory listing will use only 30%
 
-" Search stuff
-set incsearch hlsearch
-set ignorecase smartcase
+set incsearch hlsearch wrapscan ignorecase smartcase " search configuration
+set shortmess-=S  " show number of occurrences
 
 if has("gui_running")
     set guioptions-=m  " Remove menu bar
@@ -157,6 +164,7 @@ nnoremap : ;
 
 noremap <leader>y "+y
 noremap <leader>p "+p
+nnoremap <leader>cfn :let @+=join([expand('%'),  line(".")], ':')<CR>
 set backspace=indent,eol,start  " backspace behave like you expect and go through everything
 
 nnoremap <leader>tc :tabclose<CR>
@@ -166,10 +174,7 @@ nnoremap <silent> <C-W>T :tab split<CR>
 nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
 nnoremap <silent> <leader>c :nohlsearch<CR>:call clearmatches()<CR>
 
-set diffopt+=vertical,indent-heuristic
-if has("patch-8.1.0360")
-    set diffopt+=algorithm:histogram
-endif
+set diffopt+=vertical,indent-heuristic,algorithm:histogram
 
 " open a quickfix item in a new window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
@@ -208,3 +213,20 @@ if !has('win32')
     nnoremap <F2> :Step<CR>
     nnoremap <S-F2> :Finish<CR>
 endif
+
+" last-position-jump
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
+set makeprg=cmake
+
+" Set the filetype based on the file's extension, but only if
+" 'filetype' has not already been set
+au BufRead,BufNewFile *.ic setfiletype cpp
+
+" markdown
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
+let g:markdown_syntax_conceal = 0
