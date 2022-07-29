@@ -69,7 +69,7 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['markdown']
 
 Plug 'davidhalter/jedi-vim'
 
-if !has('win32')
+if has('unix') && !has('win32unix')
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 " let g:loaded_youcompleteme = 0
 let g:ycm_auto_hover = ''  " Popup is not automatically displayed
