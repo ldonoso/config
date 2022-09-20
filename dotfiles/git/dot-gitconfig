@@ -43,7 +43,7 @@
 
 [merge]
     tool = vimdiff
-    conflictStyle = zdiff3
+    conflictStyle = diff3
 
 [mergetool]
     prompt = false
