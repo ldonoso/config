@@ -11,7 +11,6 @@ if executable('ag')
 endif
 
 Plug 'flazz/vim-colorschemes'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
 Plug 'ivanov/vim-ipython'
@@ -146,8 +145,8 @@ set tags=./.tags,.tags  " Look for tags in current dir and in working dir
 nnoremap ,t :!(cd %:p:h; ctags -f .tags *)&
 
 " Windows
-set splitright
-set splitbelow
+set splitbelow  " split will put the new window below of the current one
+set splitright  " vsplit will put the new window right of the current one
 
 " Center the display line after searches. http://www.vim.org/tips/tip.php?tip_id=528
 nnoremap n nzz
@@ -171,7 +170,7 @@ nnoremap <leader>tc :tabclose<CR>
 nnoremap <silent> <C-W>T :tab split<CR>
 
 " line highlight
-nnoremap <silent> <Leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
+nnoremap <silent> <leader>l :call matchadd('Search', '\%'.line('.').'l')<CR>
 nnoremap <silent> <leader>c :nohlsearch<CR>:call clearmatches()<CR>
 
 set diffopt+=vertical,indent-heuristic,algorithm:histogram
