@@ -1,3 +1,6 @@
+#[include]
+#    path = ~/src/config/dotfiles/git/dot-gitconfig
+
 [user]
     name = Luis Donoso
     email = luisantoniod@gmail.com
