@@ -109,7 +109,9 @@ set fileformats=unix,dos " New files will be encoded using unix line termination
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
 syntax on
-au BufRead,BufNewFile *.make setfiletype make
+au BufRead,BufNewFile *.make setfiletype make  " only if filetype has not already been set
+au BufRead,BufNewFile *.sql set filetype=sqlinformix  " overrides any filetype that has already been set
+
 set number " current line shows the global number
 set relativenumber
 set wildmode=longest,list
