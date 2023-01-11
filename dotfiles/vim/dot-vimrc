@@ -68,6 +68,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" active: checks whenever a buffer is saved or initially opened, passive: checks when the user calls :SyntasticCheck.
+" In passive mode, checks are still done for filetypes in "active_filetypes" (and "passive_filetypes" is ignored).
+" In active mode, checks are not done for any filetypes in "passive_filetypes" ("active_filetypes" is ignored).
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }  " disable all
 let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['markdown'] }
 
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
