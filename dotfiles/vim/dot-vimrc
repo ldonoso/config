@@ -14,9 +14,12 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'idanarye/vim-merginal'
 Plug 'ivanov/vim-ipython'
-
 Plug 'majutsushi/tagbar'  " requires universal ctags
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slowness
+
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+endif
 
 Plug 'mileszs/ack.vim'
 if executable('ag')  " Use silver searcher when available
@@ -27,7 +30,7 @@ if executable('ag')  " Use silver searcher when available
     let g:ackprg = 'ag --vimgrep'
 
     " Search selected text
-    vnoremap <leader>s y:Ack! -Q '<C-R>"'<CR>
+    vnoremap <leader>s y:Ack! -Q -i '<C-R>"'<CR>
 endif
 
 Plug 'nelstrom/vim-visual-star-search'
@@ -40,6 +43,7 @@ nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gb :Git blame<CR>
 
 Plug 'tpope/vim-rhubarb'  " GBrowse github
+Plug 'tommcdo/vim-fubitive'  " GBrowse bitbucket
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -64,26 +68,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['markdown'] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['markdown'] }
 
-Plug 'davidhalter/jedi-vim'
-
-if has('unix') && !has('win32unix')
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
-" let g:loaded_youcompleteme = 0
-let g:ycm_auto_hover = ''  " Popup is not automatically displayed
-" nnoremap <leader>md <plug>(YCMHover)
-nnoremap <leader>mt :YcmCompleter GoTo<CR>
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
-" nnoremap <leader>gd :YcmCompleter GetDoc<CR>
-" nnoremap <leader>gtp :YcmCompleter GetType<CR>
-" nnoremap <leader>gp :YcmCompleter GetParent<CR>
-" nnoremap <leader>gti :YcmCompleter GoToInclude<CR>
-" nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-" nnoremap <leader>yd :YcmDiags<CR>
-endif
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 Plug 'lyuts/vim-rtags'
 let g:rtagsUseLocationList = 0  " Use QuickList
@@ -96,6 +83,8 @@ tnoremap <silent> <C-l> <C-W>:TmuxNavigateRight<CR>
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tagbar#enabled = 1
+
+Plug 'Konfekt/vim-wsl-copy-paste'
 
 call plug#end()
 
@@ -136,6 +125,7 @@ endif
 
 set colorcolumn=100
 set background=dark
+set termguicolors  " enables 24-bit RGB color in the TUI
 colorscheme gruvbox
 
 " tags. One tag file per directory and a general one
@@ -229,5 +219,5 @@ au BufRead,BufNewFile *.ic setfiletype cpp
 
 " markdown
 let g:markdown_folding = 1
-let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c']
+let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'cpp', 'c', 'sql']
 let g:markdown_syntax_conceal = 0
