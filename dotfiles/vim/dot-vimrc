@@ -91,17 +91,19 @@ let g:airline#extensions#tagbar#enabled = 1
 
 Plug 'Konfekt/vim-wsl-copy-paste'
 
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 " :set directory=~/.vim/swapfiles//
 set autoread
 set hidden  " switch between buffers without saving
 
-" Encoding stuff
+" general encoding settings
 set encoding=utf-8
-set fileformats=unix,dos " New files will be encoded using unix line termination.
-
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab   
+set fileformats=unix,dos " new files will be encoded using unix line termination.
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set modeline  " read modelines
 syntax on
 au BufRead,BufNewFile *.make setfiletype make  " only if filetype has not already been set
 au BufRead,BufNewFile *.sql set filetype=sqlinformix  " overrides any filetype that has already been set
@@ -197,7 +199,7 @@ autocmd FileType git set foldmethod=syntax
 
 " clang format
 noremap <leader>cf :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
-let g:clang_format_fallback_style = 'none' 
+let g:clang_format_fallback_style = 'none'
 
 " termdebug
 if !has('win32')
