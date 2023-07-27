@@ -51,7 +51,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-sleuth'
 Plug 'ujihisa/tabpagecolorscheme'
-Plug 'vim-scripts/BufOnly.vim'
 Plug 'will133/vim-dirdiff'
 
 Plug 'AndrewRadev/linediff.vim'
@@ -89,9 +88,12 @@ tnoremap <silent> <C-l> <C-W>:TmuxNavigateRight<CR>
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tagbar#enabled = 1
 
-Plug 'Konfekt/vim-wsl-copy-paste'
-
 Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+Plug 'lfv89/vim-interestingwords'
+" Also used in term mode if supported
+let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
 
 call plug#end()
 
@@ -103,7 +105,8 @@ set hidden  " switch between buffers without saving
 set encoding=utf-8
 set fileformats=unix,dos " new files will be encoded using unix line termination.
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-set modeline  " read modelines
+
+set modeline  " read vim modelines
 syntax on
 au BufRead,BufNewFile *.make setfiletype make  " only if filetype has not already been set
 au BufRead,BufNewFile *.sql set filetype=sqlinformix  " overrides any filetype that has already been set
@@ -111,15 +114,18 @@ au BufRead,BufNewFile *.sql set filetype=sqlinformix  " overrides any filetype t
 set number " current line shows the global number
 set relativenumber
 set wildmode=longest,list
-set mouse=a
+set mouse=  " disable mouse
 set cursorline  " highlight current line
 set belloff=all
 set wildignore=*.o,*.obj,*.swp
 let g:netrw_hide=1  " not show hidden files
-let g:netrw_list_hide= '.*\.swp$'
-let g:netrw_preview   = 1  " Make vertical splitting the default for previewing files
-"let g:netrw_liststyle = 3  " Make the default listing style "tree"
-let g:netrw_winsize   = 30  " When a vertical preview window is opened, the directory listing will use only 30%
+let g:netrw_list_hide='.*\.swp$'
+let g:netrw_preview=1  " Make vertical splitting the default for previewing files
+"let g:netrw_liststyle=3  " Make the default listing style "tree"
+let g:netrw_winsize=30  " When a vertical preview window is opened, the directory listing will use only 30%
+set wrap linebreak  " break at a word boundary.
+
+set laststatus=3  " when the last window will have a status line. 3: always and ONLY the last window
 
 set incsearch hlsearch wrapscan ignorecase smartcase " search configuration
 set shortmess-=S  " show number of occurrences
@@ -160,8 +166,8 @@ nnoremap * *``
 nnoremap ; :
 nnoremap : ;
 
-noremap <leader>y "+y
-noremap <leader>p "+p
+set clipboard=unnamedplus  " use the clipboard (instead of the '+' and/or '*' registers)
+
 nnoremap <leader>cfn :let @+=join([expand('%'),  line(".")], ':')<CR>
 set backspace=indent,eol,start  " backspace behave like you expect and go through everything
 
