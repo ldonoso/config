@@ -42,9 +42,7 @@ require('lazy').setup({
 },
 
 'mileszs/ack.vim',
-
 'nelstrom/vim-visual-star-search',
-
 'tpope/vim-dispatch',
 'tpope/vim-fugitive',
 
@@ -67,13 +65,9 @@ require('lazy').setup({
 },
 
 'lyuts/vim-rtags',
-
 'christoomey/vim-tmux-navigator',
-
 'vim-airline/vim-airline',
-
 'editorconfig/editorconfig-vim',
-
 'lfv89/vim-interestingwords'
 
 }, {})
@@ -293,3 +287,6 @@ map("v", "p", "p`]")
 map("n", "p", "p`]")
 
 --vim.g.netrw_browsex_viewer = "cmd.exe /C start"  -- open url with vim in ubuntu wsl
+
+-- Disable tmux navigator when zooming the Vim pane
+vim.g.tmux_navigator_disable_when_zoomed = 1
