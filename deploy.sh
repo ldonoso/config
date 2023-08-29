@@ -1,13 +1,13 @@
 set -x  # echo on
 
-sudo apt install stow make python3-pip silversearcher-ag tree universal-ctags
+sudo apt install stow make python3-pip silversearcher-ag tree universal-ctags ack-grep
 
 # file viewer on wsl that allows you to open files and folders from wsl in windows
 # so vim gx works
 sudo apt install wslu
 
 # nvim dependencies
-sudo apt-get install stow ninja-build gettext cmake unzip curl silversearcher-ag ack
+sudo apt-get install stow ninja-build gettext cmake unzip curl silversearcher-ag
 
 # nvim - for python 3 plugins
 sudo python3 -m pip install --user --upgrade pynvim
