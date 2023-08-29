@@ -35,13 +35,19 @@ autocmd({ "BufReadPost", }, {
 	command = [[if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif]],
 })
 
+local LDonosoGroup = augroup('LDonoso', { clear = true })
+
 -- Highlight on yank
-augroup('YankHighlight', { clear = true })
 autocmd('TextYankPost', {
-	group = 'YankHighlight',
+	group = LDonosoGroup,
 	callback = function()
 		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
 	end
 })
 
-
+-- Remove whitespaces
+autocmd({"BufWritePre"}, {
+    group = LDonosoGroup,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
