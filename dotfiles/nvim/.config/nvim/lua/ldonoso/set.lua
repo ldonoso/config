@@ -36,10 +36,6 @@ vim.cmd.colorscheme("gruvbox")
 
 vim.opt.diffopt:append('linematch:60')  -- nvim exclusive option
 
--- folding using treesitter
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
 vim.g.EditorConfig_exclude_patterns = "['fugitive://.*']"
 
 vim.g.interestingWordsGUIColors = "['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']"
