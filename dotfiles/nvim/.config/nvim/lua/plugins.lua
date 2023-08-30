@@ -1,5 +1,5 @@
 return {
-    'ctrlpvim/ctrlp.vim', 
+    'ctrlpvim/ctrlp.vim',
 
     'flazz/vim-colorschemes',
     'godlygeek/tabular',
@@ -57,6 +57,7 @@ return {
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},     -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'hrsh7th/cmp-buffer'},   -- Optional - ldonoso
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     },
