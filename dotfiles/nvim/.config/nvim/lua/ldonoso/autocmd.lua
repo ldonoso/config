@@ -26,7 +26,7 @@ autocmd("Filetype", {
 
 autocmd("FileType", {
 	pattern = {"xml", "git", },  -- when the event is FileType the pattern is the file type
-	command = "set foldmethod = syntax",
+	command = "set foldmethod=syntax",
 })
 
 -- last-position-jump
