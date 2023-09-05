@@ -52,7 +52,6 @@ vim.opt.tags = { "./.tags", ".tags" }  -- Look for tags in current dir and in wo
 vim.keymap.set("t", ",t", ":!(cd %:p:h; ctags -f .tags *)&")
 
 -- folding
-vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 10
 vim.opt.foldenable = false  -- all folds are open
 vim.opt.foldlevel = 2
