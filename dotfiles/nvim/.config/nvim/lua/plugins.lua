@@ -39,7 +39,6 @@ return {
         ft = 'python'
     },
 
-    'lyuts/vim-rtags',
     'christoomey/vim-tmux-navigator',
     'vim-airline/vim-airline',
     'editorconfig/editorconfig-vim',
