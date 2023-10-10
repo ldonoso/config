@@ -44,21 +44,31 @@ return {
     'editorconfig/editorconfig-vim',
     'lfv89/vim-interestingwords',
 
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    -- LSP support
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+        branch = 'v3.x',
+        lazy = true,
+        config = false,
+    },
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'hrsh7th/cmp-buffer'},   -- Optional - ldonoso
-            {'L3MON4D3/LuaSnip'},     -- Required
-        }
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-buffer'},  -- Optional
+        },
+    },
+
+    -- Autocompletion
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            {'L3MON4D3/LuaSnip'},
+        },
     },
 
 }

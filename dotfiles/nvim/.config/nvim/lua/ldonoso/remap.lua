@@ -25,7 +25,7 @@ vim.keymap.set("n", ":", ";")
 vim.keymap.set("n", "Q", '0yt=A<C-r>=<C-r>"<CR><Esc>')
 
 -- Run command under cursor in terminal below
-vim.keymap.set("n", "<leader>r", '^y$<C-W>b<C-W>""<CR><C-W>pj')
+vim.keymap.set("n", "<leader>r", '^y$<C-W>jpi<CR><C-\\><C-N><C-W>pj')
 
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 vim.keymap.set("n", "<C-W>T", ":tab split<CR>", { silent = true})

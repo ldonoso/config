@@ -13,7 +13,7 @@ vim.g.netrw_winsize = 30  -- When a vertical preview window is opened, the direc
 vim.opt.wrap = true
 vim.opt.linebreak  = true-- break at a word boundary.
 
-vim.opt.laststatus = 3  -- when the last window will have a status line. 3: always and ONLY the last window
+vim.opt.laststatus = 2  -- when the last window will have a status line. 3: always and ONLY the last window
 
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
