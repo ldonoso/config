@@ -20,8 +20,14 @@ require('mason-lspconfig').setup({
 
 -- cmp config. Make sure you setup `cmp` after lsp-zero
 local cmp = require('cmp')
+local cmp_format = require('lsp-zero').cmp_format()
 
 cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+  },
+
   completion = {
     autocomplete = false  -- Invoke completion menu manually
   },
@@ -30,4 +36,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = false }),  -- `Enter` key to confirm completion
     ['<C-Space>'] = cmp.mapping.complete(),  -- Ctrl+space to trigger completion menu
   }),
+
+  --- (Optional) Show source name in completion menu
+  formatting = cmp_format,
 })
