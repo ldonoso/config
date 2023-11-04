@@ -31,8 +31,7 @@ end
 
 vim.opt.colorcolumn = "100"
 vim.opt.background = "dark"
-vim.opt.termguicolors  = true -- enables 24-bit RGB color in the TUI
-vim.cmd.colorscheme("gruvbox")
+vim.opt.termguicolors = true -- enables 24-bit RGB color in the TUI
 
 vim.opt.diffopt:append('linematch:60')  -- nvim exclusive option
 

@@ -43,8 +43,6 @@ vim.g.linediff_further_buffer_command = 'rightbelow vertical new'
 
 vim.g.rtagsUseLocationList = 0  -- Use QuickList
 
-vim.g['airline#extensions#tagbar#enabled'] = 1
-
 vim.cmd [[ syntax on ]]  -- implies filetype on
 
 -- tags. One tag file per directory and a general one

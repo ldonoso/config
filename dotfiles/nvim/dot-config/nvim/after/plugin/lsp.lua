@@ -20,7 +20,6 @@ require('mason-lspconfig').setup({
 
 -- cmp config. Make sure you setup `cmp` after lsp-zero
 local cmp = require('cmp')
-local cmp_format = require('lsp-zero').cmp_format()
 
 cmp.setup({
   sources = {
@@ -38,5 +37,5 @@ cmp.setup({
   }),
 
   --- (Optional) Show source name in completion menu
-  formatting = cmp_format,
+  formatting = require('lsp-zero').cmp_format()
 })
