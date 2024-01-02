@@ -1,4 +1,4 @@
-vim.keymap.set("t", "<C-h>", "<C-W>:TmuxNavigateLeft<CR>", { silent = true })
-vim.keymap.set("t", "<C-j>", "<C-W>:TmuxNavigateDown<CR>", { silent = true })
-vim.keymap.set("t", "<C-k>", "<C-W>:TmuxNavigateUp<CR>", { silent = true })
-vim.keymap.set("t", "<C-l>", "<C-W>:TmuxNavigateRight<CR>", { silent = true })
+vim.keymap.set("t", "<c-h>", "<c-\\><c-n>:TmuxNavigateLeft<cr>", { silent = true })
+vim.keymap.set("t", "<c-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>", { silent = true })
+vim.keymap.set("t", "<c-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>", { silent = true })
+vim.keymap.set("t", "<c-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>", { silent = true })

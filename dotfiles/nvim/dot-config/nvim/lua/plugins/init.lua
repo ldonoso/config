@@ -48,9 +48,29 @@ return {
 
     {
         'christoomey/vim-tmux-navigator',
+
+        -- init is called during startup. Configuration for vim plugins typically should be set in an init function
         init = function()
             vim.g.tmux_navigator_disable_when_zoomed = 1
         end,
+
+        -- Lazy-load on command
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+        },
+
+        -- Lazy-load on key bindings
+        keys = {
+            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        },
     },
 
     {
@@ -63,7 +83,14 @@ return {
         end,
     },
 
-    'editorconfig/editorconfig-vim',
+    {
+        'editorconfig/editorconfig-vim',
+        init = function()
+            -- To ensure that this plugin works well with Tim Pope's fugitive
+            vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', }
+        end,
+    },
+
     'lfv89/vim-interestingwords',
 
 }
