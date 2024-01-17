@@ -55,3 +55,11 @@ autocmd({"BufWritePre"}, {
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
+
+-- Make panels equal size when main window is resized
+autocmd({"VimResized"}, {
+	group = LDonosoGroup,
+	pattern = "*",
+	command = [[ wincmd = ]],
+})
+
