@@ -1,8 +1,5 @@
 vim.keymap.set("n", "<leader>cfn", ":let @+=join([expand('%'),  line('.')], ':')<CR>")
 
--- line diff between two diff markers
-vim.keymap.set("n", "<leader>ld", "jV]nk:Linediff<CR>]njV]nk:Linediff<CR>")
-
 -- automatically jump to end of text you pasted
 vim.keymap.set("v", "y", "y`]")
 vim.keymap.set("v", "p", "p`]")

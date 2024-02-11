@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- { Auto-install lazy.nvim if not present
+-- { Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,26 +20,13 @@ require('lazy').setup("plugins", {})
 
 -- }
 
-vim.g.ctrlp_working_path_mode = 0
-vim.g.ctrlp_switch_buffer = 'et'
-if vim.fn.executable('ag') == 1 then
-    -- Use ag in CtrlP for listing files
-    vim.g.ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
-end
-
 if vim.fn.executable('ag') == 1 then  -- Use silver searcher when available
     -- Use ag over grep
     vim.opt.grepprg = "ag --nogroup --nocolor"
 
     -- --skip-vcs-ignores
     vim.g.ackprg = 'ag --vimgrep'
-
-    -- Search selected text
-    vim.keymap.set("v", "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]])
 end
-
-vim.g.linediff_first_buffer_command = 'leftabove new'
-vim.g.linediff_further_buffer_command = 'rightbelow vertical new'
 
 vim.g.rtagsUseLocationList = 0  -- Use QuickList
 
