@@ -13,9 +13,6 @@ return {
     {
         'ctrlpvim/ctrlp.vim',
         lazy = false,
-        keys = {
-            { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], "v", desc = "Search selected text" },
-        },
         config = function()
             vim.g.ctrlp_working_path_mode = 0
             vim.g.ctrlp_switch_buffer = 'et'
@@ -39,7 +36,14 @@ return {
         end,
     },
 
-    'mileszs/ack.vim',
+    {
+        'mileszs/ack.vim',
+        lazy = false,
+        keys = {
+            { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], mode = "v", desc = "Search selected text" },
+        },
+    },
+
     'nelstrom/vim-visual-star-search',
     'tpope/vim-dispatch',
 
