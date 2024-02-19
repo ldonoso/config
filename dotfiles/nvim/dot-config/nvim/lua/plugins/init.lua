@@ -87,10 +87,9 @@ return {
     {
         'christoomey/vim-tmux-navigator',
 
-        -- init is called during startup before the pluging loads.
-        -- Configuration for vim plugins that depend on variables set before loading,
-        -- typically should be set in an init function
-        init = function()
+        -- init is called before the pluging loads. For vim plugins that depend on variables set before loading,
+        -- config called after the plugin is loaded.
+        config = function()
             vim.g.tmux_navigator_disable_when_zoomed = 1
         end,
 
@@ -128,12 +127,17 @@ return {
 
     {
         'editorconfig/editorconfig-vim',
-        init = function()
+        config = function()
             -- To ensure that this plugin works well with Tim Pope's fugitive
             vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', }
         end,
     },
 
-    'lfv89/vim-interestingwords',
+    {
+        'lfv89/vim-interestingwords',
+        config = function()
+            vim.g.interestingWordsGUIColors = { '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF', }
+        end,
+    },
 
 }

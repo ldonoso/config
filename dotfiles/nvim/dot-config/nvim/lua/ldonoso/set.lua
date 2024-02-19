@@ -35,10 +35,6 @@ vim.opt.termguicolors = true -- enables 24-bit RGB color in the TUI
 
 vim.opt.diffopt:append('linematch:60')  -- nvim exclusive option
 
-vim.g.EditorConfig_exclude_patterns = "['fugitive://.*']"
-
-vim.g.interestingWordsGUIColors = "['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']"
-
 vim.g.netrw_browsex_viewer = "wslview"
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
