@@ -6,7 +6,7 @@
     email = luisantoniod@gmail.com
 
 [core]
-    editor = vim
+    editor = nvim
     longpaths = true
     excludesFile  = ~/.gitignore
     commitGraph = true
@@ -17,10 +17,12 @@
     writeCommitGraph = true
 
 [fetch]
-    writeCommitGraph = true
+    writeCommitGraph = true  # on fetch, update the cached graph of commits
+    prune = true  # automatically delete remote tracking branches that have been deleted
 
 [branch]
     autosetuprebase = always
+    sort = -committerdate
 
 [commit]
     verbose = true
@@ -32,37 +34,31 @@
 [alias]
     lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s\"
     st = status -s
+    bl = blame -w -C -C -C
     spull = __git_spull() { git pull "$@" && git submodule sync --recursive && git submodule update --init --recursive; }; __git_spull
 
 [status]
     submoduleSummary = true
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
     submodule = log
     algorithm = histogram
-    colorMoved = default
+    colorMoved = default  # uses different colours to highlight lines in diffs that have been “moved”
 
 [difftool]
-    # Be able to abort all diffs with `:cq`
-    trustExitCode = true
+    prompt = false  # stop prompting about luanching difftool
+    trustExitCode = true  # abort all diffs with `:cq`
 
 [merge]
-    tool = vimdiff
-    conflictStyle = diff3
+    tool = nvimdiff
+    conflictStyle = zdiff3
 
 [mergetool]
     prompt = false
 
-[mergetool "meld"]
-    # The default cmd shows $BASE in the middle
-    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
-
-[mergetool "meldPlus"]
-    cmd = gitmerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-
 [pull]
-    rebase = merges
+    rebase = true
 
 [push]
     autoSetupRemote = true
@@ -70,5 +66,6 @@
 [rebase]
     autoStash = true
 
-[rerere]
+[rerere]  # REuse REcorded REsolution
     enabled = true
+

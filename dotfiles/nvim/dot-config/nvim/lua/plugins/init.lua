@@ -52,7 +52,7 @@ return {
             { "<leader>gs", ":Git<CR><C-w>20_" },
             { "<leader>gd", ":Gdiff!<CR>" },
             { "<leader>ge", ":Gedit<CR>" },
-            { "<leader>gb", ":Git blame<CR>" },
+            { "<leader>gb", ":Git blame -w -C -C -C<CR>" },  -- ignore ws and moved/copied chunks
         },
     },
 
