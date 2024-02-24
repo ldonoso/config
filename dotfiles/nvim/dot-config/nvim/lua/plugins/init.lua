@@ -54,7 +54,7 @@ return {
         lazy = false,
         keys = {
             { "<leader>gs", ":Git<CR><C-w>20_" },
-            { "<leader>gd", ":Gdiff!<CR>" },
+            { "<leader>gd", ":Gvdiffsplit!<CR>" },
             { "<leader>ge", ":Gedit<CR>" },
             { "<leader>gb", ":Git blame -w -C -C -C<CR>" },  -- ignore ws and moved/copied chunks
         },
@@ -90,7 +90,7 @@ return {
 
     {
         'christoomey/vim-tmux-navigator',
-
+        lazy = false,
         -- init is called before the pluging loads. For vim plugins that depend on variables set before loading,
         -- config called after the plugin is loaded.
         config = function()
