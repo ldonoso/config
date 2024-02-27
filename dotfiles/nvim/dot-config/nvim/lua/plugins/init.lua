@@ -75,7 +75,12 @@ return {
         'AndrewRadev/linediff.vim',
         lazy = false,
         keys = {
-            { "<leader>ld", "jV]nk:Linediff<CR>]njV]nk:Linediff<CR>", desc =  "line diff between two diff markers"},
+            {
+                "<leader>ld",
+                "jV<Plug>(unimpaired-context-next)k:Linediff<CR><Plug>(unimpaired-context-next)jV<Plug>(unimpaired-context-next)k:Linediff<CR>",
+                mode = "n",
+                desc = "line diff between two diff markers",
+            },
         },
         config = function()
             vim.g.linediff_first_buffer_command = 'leftabove new'
@@ -112,10 +117,10 @@ return {
             { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 
-            { "<c-h>", "<c-\\><c-n>:TmuxNavigateLeft<cr>", "t", silent = true },
-            { "<c-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>", "t", silent = true },
-            { "<c-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>", "t", silent = true },
-            { "<c-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>", "t", silent = true },
+            { "<c-h>", "<c-\\><c-n>:TmuxNavigateLeft<cr>", mode = "t", silent = true },
+            { "<c-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>", mode = "t", silent = true },
+            { "<c-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>", mode = "t", silent = true },
+            { "<c-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>", mode = "t", silent = true },
         },
     },
 

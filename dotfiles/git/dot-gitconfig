@@ -32,7 +32,8 @@
     prune = true
 
 [alias]
-    lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s\"
+    # %cr committer date relative, %cn commiter name
+    lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr - %cn)%Creset %s\"
     st = status -s
     bl = blame -w -C -C -C
     spull = __git_spull() { git pull "$@" && git submodule sync --recursive && git submodule update --init --recursive; }; __git_spull
