@@ -5,9 +5,9 @@ vim.keymap.set("v", "y", "y`]")
 vim.keymap.set("v", "p", "p`]")
 vim.keymap.set("n", "p", "p`]")
 
--- Center the display line after searches. http://www.vim.org/tips/tip.php?tip_id=528
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
+-- after searches, center the display and unfold
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 vim.keymap.set("n", "g*", "g*zz")

@@ -73,6 +73,7 @@ CASE_SENSITIVE="true"
 plugins=(vi-mode tmux)
 
 VI_MODE_SET_CURSOR=true  # the cursor style is changed when switching to a different input mode
+ZSH_TMUX_AUTOSTART=true  # automatically starts tmux
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,5 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.bash_aliases
 unsetopt share_history   # share no command history data among shells
 
