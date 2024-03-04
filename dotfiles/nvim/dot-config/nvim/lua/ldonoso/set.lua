@@ -33,8 +33,6 @@ vim.opt.colorcolumn = "100"
 vim.opt.background = "dark"
 vim.opt.termguicolors = true -- enables 24-bit RGB color in the TUI
 
-vim.opt.diffopt:append('linematch:60')  -- nvim exclusive option
-
 vim.g.netrw_browsex_viewer = "wslview"
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -62,5 +60,10 @@ vim.opt.clipboard = "unnamedplus"  -- use the clipboard (instead of the '+' and/
 
 vim.opt.backspace = { "indent", "eol", "start" }  -- backspace behave like you expect and go through everything
 
-vim.opt.diffopt:append({ "vertical", "indent-heuristic", "algorithm:histogram" })
+vim.opt.diffopt:append({
+	"vertical",
+	"indent-heuristic",
+	"algorithm:patience",
+	"linematch:60",
+})
 
