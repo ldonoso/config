@@ -25,7 +25,7 @@ autocmd({ "BufRead", "BufNewFile", }, {
 autocmd("Filetype", {
 	group = LDonosoGroup,
 	pattern = "qf",
-	command = "nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L",
+	command = "nnoremap <buffer> <localleader><Enter> <C-w><Enter><C-w>L",
 })
 
 autocmd("FileType", {
