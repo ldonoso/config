@@ -70,10 +70,9 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode tmux)
+plugins=(vi-mode)
 
 VI_MODE_SET_CURSOR=true  # the cursor style is changed when switching to a different input mode
-ZSH_TMUX_AUTOSTART=true  # automatically starts tmux
 
 source $ZSH/oh-my-zsh.sh
 
