@@ -1,14 +1,15 @@
-# Setting up the development environment
+# Installation
 
-1. Clone this project:
+- Install the [Nix package manager](https://nixos.org/download.html#nix-quick-install)
 
-    ``` shell
-    mkdir -p ~/src
-    cd ~/src
-    git clone git@github.com:ldonoso/config.git
-    ```
+- Clone this repo to `~/src/config/`:
 
-2. The script `deploy.h` sets the configuration of the local environment and tools. To run it:
+         nix-shell -p git --command "git clone git@github.com:ldonoso/config.git $HOME/src/config"
 
-    1. Set `SRC_DIR` in `deploy.sh` to the dir containing the repo.
-    2. Run the script
+- Edit `home.nix`, change at least `home.homeDirectory` to match yours.
+
+- Install [Home Manager](https://github.com/nix-community/home-manager#installation)
+
+- Update HM configuration:
+
+        ln -s $HOME/.config/home-manager/home.nix $HOME/src/config/dot-files/home.nix
