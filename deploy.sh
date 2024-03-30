@@ -7,7 +7,7 @@ sudo apt install stow make python3-pip silversearcher-ag tree universal-ctags ac
 sudo apt install wslu
 
 # nvim dependencies
-sudo apt-get install stow ninja-build gettext cmake unzip curl silversearcher-ag
+sudo apt-get install stow ninja-build gettext cmake unzip curl
 
 # nvim - for python 3 plugins
 sudo python3 -m pip install --user --upgrade pynvim
@@ -19,5 +19,3 @@ stow --dir=$SRC_DIR/dotfiles --target=$HOME --dotfiles --stow clang ctags git ha
 # Do not overwrite .bashrc
 echo "source $SRC_DIR/dotfiles/dot-bashrc" >> $HOME/.bashrc
 
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim -c PlugUpdate

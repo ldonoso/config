@@ -36,6 +36,7 @@
     lg = log --decorate --oneline --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr - %cn)%Creset %s\"
     st = status -s
     bl = blame -w -C -C -C
+    dft = difftool
     spull = __git_spull() { git pull "$@" && git submodule sync --recursive && git submodule update --init --recursive; }; __git_spull
 
 [status]
@@ -51,12 +52,18 @@
     prompt = false  # stop prompting about luanching difftool
     trustExitCode = true  # abort all diffs with `:cq`
 
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
 [merge]
     tool = nvimdiff
     conflictStyle = zdiff3
 
 [mergetool]
     prompt = false
+
+[pager]
+    difftool = true
 
 [pull]
     rebase = true
