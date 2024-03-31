@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias html-to-md="pandoc --standalone --eol=lf -f html-native_divs-native_spans -t gfm --wrap=none --markdown-headings=atx"
+
 source ~/.bash_aliases
 unsetopt share_history   # share no command history data among shells
 
