@@ -74,6 +74,9 @@ plugins=(vi-mode direnv)
 
 VI_MODE_SET_CURSOR=true  # the cursor style is changed when switching to a different input mode
 
+# N.B. source before oh-my-zsh.sh so git is available for omz
+if [ -e /home/ldonoso/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ldonoso/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -106,4 +109,3 @@ alias html-to-md="pandoc --standalone --eol=lf -f html-native_divs-native_spans 
 
 source ~/.bash_aliases
 unsetopt share_history   # share no command history data among shells
-
