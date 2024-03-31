@@ -17,6 +17,8 @@
   # release notes.
   home.stateVersion = "23.11";
 
+  services.lorri.enable = true;
+
   home.packages = [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -38,6 +40,7 @@
     pkgs.zsh
     pkgs.tmux
     pkgs.pandoc
+    pkgs.direnv
   ];
 
   home.file = {
