@@ -37,11 +37,37 @@
     pkgs.silver-searcher
     pkgs.neovim
     pkgs.tree
-    pkgs.zsh
     pkgs.tmux
     pkgs.pandoc
     pkgs.direnv
   ];
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      html-to-md = "pandoc --standalone --eol=lf -f html-native_divs-native_spans -t gfm --wrap=none --markdown-headings=atx";
+    };
+
+    history.size = 10000;
+    history.path = "${config.xdg.dataHome}/zsh/history";
+
+    profileExtra = ''
+      if [ -e ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh ]; then . ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh; fi
+    '';
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "vi-mode" "direnv" ];
+      theme = "robbyrussell";
+      extraConfig = ''
+        VI_MODE_SET_CURSOR=true  # the cursor style is changed when switching to a different input mode
+      '';
+    };
+  };
 
   home.file = {
     # Building this configuration will create a copy of file in the Nix store.
@@ -49,7 +75,6 @@
     # todoluis - use variables
     ".gitconfig".source = /home/ldonoso/src/config/dot-files/dot-gitconfig;
     ".gitignore".source = /home/ldonoso/src/config/dot-files/dot-gitignore;
-    ".zshrc".source = /home/ldonoso/src/config/dot-files/dot-zshrc;
     ".tmux.conf".source = /home/ldonoso/src/config/dot-files/dot-tmux.conf;
 
     # # You can also set the file content immediately.
