@@ -1,1 +1,0 @@
-alias html-to-md='pandoc --standalone --eol=lf -f html-native_divs-native_spans -t gfm --wrap=none --markdown-headings=atx'
