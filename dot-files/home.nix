@@ -17,6 +17,10 @@
   # release notes.
   home.stateVersion = "23.11";
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   services.lorri.enable = true;
 
   home.packages = [
@@ -39,6 +43,9 @@
     pkgs.tree
     pkgs.pandoc
     pkgs.direnv
+    pkgs.clang  # for nvim.treesitter
+    pkgs.unzip  # for nvim.mason
+    pkgs.ack
   ];
 
   programs.zsh = {
@@ -118,10 +125,6 @@
   xdg.configFile."nvim" = {
     source = /home/ldonoso/src/config/dot-files/nvim;
     recursive = true;
-  };
-
-  home.sessionVariables = {
-    # EDITOR = "emacs";
   };
 
   programs.bat.enable = true;
