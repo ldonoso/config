@@ -45,7 +45,7 @@
     pkgs.direnv
     pkgs.clang  # for nvim.treesitter
     pkgs.unzip  # for nvim.mason
-    pkgs.ack
+    pkgs.ack  # required by vim-ack although ag is used
   ];
 
   programs.zsh = {

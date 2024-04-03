@@ -30,7 +30,6 @@ return {
             vim.g.ctrlp_switch_buffer = 'et'
 
             if vim.fn.executable('ag') == 1 then
-                -- Use ag in CtrlP for listing files
                 vim.g.ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
             end
         end,
@@ -55,7 +54,7 @@ return {
             { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], mode = "v", desc = "Search selected text" },
         },
         config = function()
-            if vim.fn.executable('ag') == 1 then  -- Use silver searcher when available
+            if vim.fn.executable('ag') == 1 then
                 vim.g.ackprg = 'ag --vimgrep --skip-vcs-ignores'
             end
         end,
