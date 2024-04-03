@@ -21,11 +21,7 @@ require('lazy').setup("plugins", {})
 -- }
 
 if vim.fn.executable('ag') == 1 then  -- Use silver searcher when available
-    -- Use ag over grep
     vim.opt.grepprg = "ag --nogroup --nocolor"
-
-    -- --skip-vcs-ignores
-    vim.g.ackprg = 'ag --vimgrep'
 end
 
 vim.g.rtagsUseLocationList = 0  -- Use QuickList

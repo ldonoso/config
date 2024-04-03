@@ -54,6 +54,11 @@ return {
         keys = {
             { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], mode = "v", desc = "Search selected text" },
         },
+        config = function()
+            if vim.fn.executable('ag') == 1 then  -- Use silver searcher when available
+                vim.g.ackprg = 'ag --vimgrep --skip-vcs-ignores'
+            end
+        end,
     },
 
     'nelstrom/vim-visual-star-search',
