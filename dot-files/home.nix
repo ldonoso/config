@@ -37,7 +37,6 @@
     pkgs.silver-searcher
     pkgs.neovim
     pkgs.tree
-    pkgs.tmux
     pkgs.pandoc
     pkgs.direnv
   ];
@@ -69,13 +68,45 @@
     };
   };
 
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    shortcut = "a";
+    keyMode = "vi";
+    mouse = true;
+
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.yank
+    ];
+
+    extraConfig = ''
+      set -g status-right "#H %d-%b-%y"
+      set -g pane-active-border-style fg=red  # Make active pane noticeable
+      set -g mouse on
+
+      set -sa terminal-overrides ",xterm*:Tc"  # inform tmux our underline terminal supports RGB
+
+      # Resize panes
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
+
+      # vim keybindings for copy/paste
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind-key -T copy-mode-vi y send-keys -X copy-selection
+    '';
+  };
+
   home.file = {
     # Building this configuration will create a copy of file in the Nix store.
     # Activating the configuration will then make '~/.gitconfig' a symlink to the Nix store copy.
     # todoluis - use variables
     ".gitconfig".source = /home/ldonoso/src/config/dot-files/dot-gitconfig;
     ".gitignore".source = /home/ldonoso/src/config/dot-files/dot-gitignore;
-    ".tmux.conf".source = /home/ldonoso/src/config/dot-files/dot-tmux.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
