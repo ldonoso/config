@@ -3,6 +3,13 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local LDonosoGroup = augroup('LDonoso', { clear = true })
 
+-- todo: Investigate why it is necessary
+autocmd({ "BufRead", "BufNewFile", }, {
+	group = LDonosoGroup,
+	pattern = "*.md",
+	command = "set syntax=markdown",
+})
+
 autocmd({ "BufRead", "BufNewFile", }, {
 	group = LDonosoGroup,
 	pattern = "*.make",
