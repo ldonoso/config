@@ -61,10 +61,6 @@
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
 
-    profileExtra = ''
-      if [ -e ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh ]; then . ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh; fi
-    '';
-
     oh-my-zsh = {
       enable = true;
       plugins = [ "vi-mode" "direnv" ];
