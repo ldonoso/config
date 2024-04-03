@@ -110,17 +110,17 @@
     # todoluis - use variables
     ".gitconfig".source = /home/ldonoso/src/config/dot-files/dot-gitconfig;
     ".gitignore".source = /home/ldonoso/src/config/dot-files/dot-gitignore;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
-  xdg.configFile."nvim" = {
-    source = /home/ldonoso/src/config/dot-files/nvim;
-    recursive = true;
+  xdg.configFile = {
+    "nvim" = {
+      source = /home/ldonoso/src/config/dot-files/nvim;
+      recursive = true;
+    };
+
+    "nix/nix.conf".text = ''
+      extra-experimental-features = nix-command flakes
+    '';
   };
 
   programs.bat.enable = true;
