@@ -56,7 +56,7 @@ if vim.fn.has('win32') == 0 then
     vim.keymap.set("n", "<S-F2>", ":Finish<CR>")
 end
 
--- For Windows WSL, try this g:clipboard definition:
+-- From `h g:clipboard`:
 if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
         name = 'WslClipboard',

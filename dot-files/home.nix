@@ -43,9 +43,10 @@
     pkgs.tree
     pkgs.pandoc
     pkgs.direnv
-    pkgs.clang  # for nvim.treesitter
-    pkgs.unzip  # for nvim.mason
+    pkgs.clang  # nvim.treesitter
+    pkgs.unzip  # nvim.mason
     pkgs.ack  # required by vim-ack although ag is used
+    pkgs.xsel  # tmux-yank
   ];
 
   programs.zsh = {
@@ -73,10 +74,11 @@
 
   programs.tmux = {
     enable = true;
+    terminal = "tmux-256color";
     shell = "${pkgs.zsh}/bin/zsh";
     shortcut = "a";
     keyMode = "vi";
-    mouse = true;
+    mouse = false;
 
     plugins = with pkgs; [
       tmuxPlugins.sensible
@@ -87,9 +89,7 @@
     extraConfig = ''
       set -g status-right "#H %d-%b-%y"
       set -g pane-active-border-style fg=red  # Make active pane noticeable
-      set -g mouse on
-
-      set -sa terminal-overrides ",xterm*:Tc"  # inform tmux our underline terminal supports RGB
+      set -sa terminal-overrides ",*-256col*:Tc"  # inform tmux its parent terminal supports RGB
 
       # Resize panes
       bind -r H resize-pane -L 5
