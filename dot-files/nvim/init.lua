@@ -20,8 +20,8 @@ require('lazy').setup("plugins", {})
 
 -- }
 
-if vim.fn.executable('ag') == 1 then  -- Use silver searcher when available
-    vim.opt.grepprg = "ag --nogroup --nocolor"
+if vim.fn.executable('rg') == 1 then
+    vim.opt.grepprg = "rg --vimgrep --smart-case"  -- program to use for the :grep command
 end
 
 vim.g.rtagsUseLocationList = 0  -- Use QuickList

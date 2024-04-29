@@ -1,3 +1,5 @@
+# apply with `home-manager switch`
+
 { config, pkgs, ... }:
 
 {
@@ -38,14 +40,15 @@
     # '')
 
     pkgs.git
-    pkgs.silver-searcher
+    pkgs.ack  # required by vim-ack although a different program is used
+    pkgs.ripgrep
     pkgs.neovim
     pkgs.tree
     pkgs.pandoc
     pkgs.direnv
+    pkgs.gnumake
     pkgs.clang  # nvim.treesitter
     pkgs.unzip  # nvim.mason
-    pkgs.ack  # required by vim-ack although ag is used
     pkgs.xsel  # tmux-yank
   ];
 

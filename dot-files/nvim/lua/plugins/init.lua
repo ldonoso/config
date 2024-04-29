@@ -29,8 +29,8 @@ return {
             vim.g.ctrlp_working_path_mode = 0
             vim.g.ctrlp_switch_buffer = 'et'
 
-            if vim.fn.executable('ag') == 1 then
-                vim.g.ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+            if vim.fn.executable('rg') == 1 then
+                vim.g.ctrlp_user_command = 'rg %s --files --color=never --no-ignore-vcs --glob ""'
             end
         end,
 
@@ -54,8 +54,8 @@ return {
             { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], mode = "v", desc = "Search selected text" },
         },
         config = function()
-            if vim.fn.executable('ag') == 1 then
-                vim.g.ackprg = 'ag --vimgrep --skip-vcs-ignores'
+            if vim.fn.executable('rg') == 1 then
+                vim.g.ackprg = 'rg --vimgrep --smart-case --no-ignore-vcs'
             end
         end,
     },
