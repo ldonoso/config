@@ -40,8 +40,9 @@
     # '')
 
     pkgs.git
-    pkgs.ack  # required by vim-ack although a different program is used
+    pkgs.ack  # vim-ack: although a different program is used
     pkgs.ripgrep
+    pkgs.fd  # nvim.telescope: A simple, fast and user-friendly alternative to find
     pkgs.neovim
     pkgs.tree
     pkgs.pandoc
