@@ -22,20 +22,6 @@ return {
         end,
     },
 
-    {
-        'ctrlpvim/ctrlp.vim',
-        lazy = false,
-        config = function()
-            vim.g.ctrlp_working_path_mode = 0
-            vim.g.ctrlp_switch_buffer = 'et'
-
-            if vim.fn.executable('rg') == 1 then
-                vim.g.ctrlp_user_command = 'rg %s --files --color=never --no-ignore-vcs --glob ""'
-            end
-        end,
-
-    },
-
     'godlygeek/tabular',
     'ivanov/vim-ipython',
 
@@ -44,19 +30,6 @@ return {
         -- autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slowness
         config = function()
             vim.g.tagbar_iconchars = {'', '▼' }
-        end,
-    },
-
-    {
-        'mileszs/ack.vim',
-        lazy = false,
-        keys = {
-            { "<leader>s", [[y:Ack! -Q -i '<C-R>"'<CR>]], mode = "v", desc = "Search selected text" },
-        },
-        config = function()
-            if vim.fn.executable('rg') == 1 then
-                vim.g.ackprg = 'rg --vimgrep --smart-case --no-ignore-vcs'
-            end
         end,
     },
 
