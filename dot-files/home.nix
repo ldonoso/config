@@ -1,4 +1,4 @@
-# apply with `home-manager switch`
+# apply wih `home-manager switch`
 
 { config, pkgs, ... }:
 
@@ -40,16 +40,19 @@
     # '')
 
     pkgs.git
-    pkgs.ack  # vim-ack: although a different program is used
-    pkgs.ripgrep
-    pkgs.fd  # nvim.telescope: A simple, fast and user-friendly alternative to find
+    pkgs.ack
+
+    pkgs.universal-ctags  # vim.Tagbar
+    pkgs.clang  # nvim.treesitter
+    pkgs.unzip  # nvim.mason
+    pkgs.ripgrep  # nvim.telescope
+    pkgs.fd  # nvim.telescope
     pkgs.neovim
+
     pkgs.tree
     pkgs.pandoc
     pkgs.direnv
     pkgs.gnumake
-    pkgs.clang  # nvim.treesitter
-    pkgs.unzip  # nvim.mason
     pkgs.xsel  # tmux-yank
   ];
 
@@ -61,6 +64,7 @@
 
     shellAliases = {
       html-to-md = "pandoc --standalone --eol=lf -f html-native_divs-native_spans -t gfm --wrap=none --markdown-headings=atx";
+      cd-logs = "cd $(ls -td -- ~/win/src/TestingEnvironment/Logs/*/ | head -n 1)";
     };
 
     history.size = 10000;
