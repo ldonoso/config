@@ -12,8 +12,14 @@ autocmd({ "BufRead", "BufNewFile", }, {
 
 autocmd({ "BufRead", "BufNewFile", }, {
 	group = LDonosoGroup,
+	pattern = "*.qml",
+	command = "setfiletype qmljs",  -- only if filetype has not already been set
+})
+
+autocmd({ "BufRead", "BufNewFile", }, {
+	group = LDonosoGroup,
 	pattern = "*.make",
-	command = "set filetype make",  -- only if filetype has not already been set
+	command = "setfiletype make",  -- only if filetype has not already been set
 })
 
 autocmd({ "BufRead", "BufNewFile", }, {
