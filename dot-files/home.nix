@@ -105,6 +105,11 @@
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
 
+      # New windows in the current dir
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+
       # vim keybindings for copy/paste
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
