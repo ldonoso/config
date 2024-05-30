@@ -37,7 +37,7 @@
     st = status -s
     bl = blame -w -C -C -C
     dft = difftool
-    spull = __git_spull() { git pull "$@" && git submodule sync --recursive && git submodule update --init --recursive; }; __git_spull
+    spull = "!f() { git pull $@ && git submodule sync --recursive && git submodule update --init --recursive; }; f"
 
 [status]
     submoduleSummary = true
