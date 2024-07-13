@@ -146,4 +146,9 @@ return {
         end,
     },
 
+    {
+        'kovisoft/paredit',
+        ft = { "lisp", },
+    },
+
 }
