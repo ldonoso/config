@@ -12,14 +12,10 @@ return {
         },
     },
 
-    config = function()
+    config = function ()
         local telescope = require('telescope')
         local actions = require('telescope.actions')
         local lga_actions = require('telescope-live-grep-args.actions')
-
-        local function add_no_ignore(opts)
-            return {"--no-ignore"}
-        end
 
         telescope.setup {
             defaults = {
@@ -32,9 +28,9 @@ return {
                         },
                     },
                 },
-                grep_string = { additional_args = add_no_ignore },
             },
             extensions = {
+                -- makes grep_string unnecessary
                 live_grep_args = {
                     auto_quoting = true, -- enable/disable auto-quoting
                     mappings = {
@@ -58,14 +54,18 @@ return {
         local lga_shortcuts = require('telescope-live-grep-args.shortcuts')
 
         -- https://www.reddit.com/r/neovim/comments/sjiwox/question_give_arguments_to_vimkeymapsets_function/
-        vim.keymap.set('n', '<C-p>', function() builtin.find_files({ no_ignore = true }) end, opts)
-        vim.keymap.set('v', '<C-p>', function() builtin.find_files({ no_ignore = true, search_file = vim.fn.expand('<cword>'), }) end, opts) -- TODO: not correct!
+        local wrap = function (func, ...)
+            local args = {...}
+            return function () func(unpack(args)) end
+        end
 
-        vim.keymap.set('n', '<leader>fg', telescope.extensions.live_grep_args.live_grep_args, opts)
-        vim.keymap.set('v', '<leader>fg', lga_shortcuts.grep_visual_selection, opts)
+        vim.keymap.set('n', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', no_ignore = true, }), opts)
+        vim.keymap.set('v', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', no_ignore = true, search_file = vim.fn.expand('<cword>'), }), opts) -- TODO: not correct!
 
-        vim.keymap.set({ 'n', 'v', }, '<leader>fw', builtin.grep_string, opts)
-        vim.keymap.set('n', '<leader>fs', builtin.lsp_dynamic_workspace_symbols, opts)
+        vim.keymap.set('n', '<leader>fg', wrap(telescope.extensions.live_grep_args.live_grep_args, { layout_strategy = 'current_buffer', }), opts)
+        vim.keymap.set('v', '<leader>fg', wrap(lga_shortcuts.grep_visual_selection, { layout_strategy = 'current_buffer', }), opts)
+
+        vim.keymap.set('n', '<leader>fs', wrap(builtin.lsp_dynamic_workspace_symbols, { layout_strategy = 'current_buffer', }), opts)
 
         telescope.load_extension('fzf')
         telescope.load_extension("live_grep_args")

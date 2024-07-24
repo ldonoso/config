@@ -5,7 +5,7 @@ return {
         enabled = false,
         lazy = false,  -- make sure we load this during startup if it is your main colorscheme
         priority = 1000,  -- make sure to load this before all the other start plugins
-        config = function()
+        config = function ()
             vim.g.gruvbox_italic = 0
             vim.cmd([[colorscheme gruvbox]])
         end,
@@ -17,7 +17,7 @@ return {
         enabled = true,
         lazy = false,  -- make sure we load this during startup if it is your main colorscheme
         priority = 1000,  -- make sure to load this before all the other start plugins
-        config = function()
+        config = function ()
             vim.cmd([[colorscheme gruvbox-material]])
         end,
     },
@@ -28,7 +28,7 @@ return {
     {
         'preservim/tagbar',  -- requires universal ctags
         -- autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slowness
-        config = function()
+        config = function ()
             vim.g.tagbar_iconchars = {'', '▼' }
         end,
     },
@@ -71,7 +71,7 @@ return {
                 desc = "line diff between two diff markers",
             },
         },
-        config = function()
+        config = function ()
             vim.g.linediff_first_buffer_command = 'leftabove new'
             vim.g.linediff_further_buffer_command = 'rightbelow vertical new'
         end,
@@ -87,7 +87,7 @@ return {
         lazy = false,
         -- init is called before the pluging loads. For vim plugins that depend on variables set before loading,
         -- config called after the plugin is loaded.
-        config = function()
+        config = function ()
             vim.g.tmux_navigator_disable_when_zoomed = 1
         end,
 
@@ -116,7 +116,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', },
-        config = function()
+        config = function ()
             require('lualine').setup({
              -- sections = { lualine_c = {'filename', 'nvim_treesitter#statusline', }, },
             })
@@ -125,7 +125,7 @@ return {
 
     {
         'editorconfig/editorconfig-vim',
-        config = function()
+        config = function ()
             -- To ensure that this plugin works well with Tim Pope's fugitive
             vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', }
         end,
@@ -133,7 +133,7 @@ return {
 
     {
         'lfv89/vim-interestingwords',
-        config = function()
+        config = function ()
             vim.g.interestingWordsGUIColors = { '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF', }
         end,
     },
@@ -141,14 +141,14 @@ return {
     {
         'vlime/vlime',
         ft = { "lisp", },
-        config = function(plugin)
+        config = function (plugin)
             vim.opt.rtp:append(plugin.dir .. "/vim")
         end,
     },
 
     {
         'kovisoft/paredit',
-        ft = { "lisp", },
+        ft = { "lisp", 'clojure', 'scheme', },
     },
 
 }

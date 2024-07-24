@@ -57,7 +57,7 @@ autocmd({ "BufReadPost", }, {
 -- Highlight on yank
 autocmd('TextYankPost', {
 	group = LDonosoGroup,
-	callback = function()
+	callback = function ()
 		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
 	end
 })
