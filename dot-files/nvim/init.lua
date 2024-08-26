@@ -33,7 +33,7 @@ vim.cmd [[ syntax on ]]  -- implies filetype on
 vim.opt.tags = { "./.tags", ".tags" }  -- Look for tags in current dir and in working dir
 
 -- Build the tag file in the dir of the current file
-vim.keymap.set("t", ",t", ":!(cd %:p:h; ctags -f .tags *)&")
+vim.keymap.set("t", ",t", "<cmd>!(cd %:p:h; ctags -f .tags *)&")
 
 -- folding
 vim.opt.foldnestmax = 10
@@ -42,7 +42,7 @@ vim.opt.foldlevel = 2
 vim.g.xml_syntax_folding = 1
 
 -- clang format
-vim.keymap.set("n", "<leader>cf", ":py3f /usr/share/clang/clang-format-10/clang-format.py<cr>")
+vim.keymap.set("n", "<leader>cf", "<cmd>py3f /usr/share/clang/clang-format-10/clang-format.py<cr>")
 vim.g.clang_format_fallback_style = 'none'
 
 -- termdebug
@@ -50,10 +50,10 @@ if vim.fn.has('win32') == 0 then
     -- https://gavinhoward.com/2020/12/my-development-environment-and-how-i-got-there/
     vim.cmd [[ packadd termdebug ]]
     vim.g.termdebug_wide = 1
-    vim.keymap.set("n", "<F5>", ":Continue<CR>")
-    vim.keymap.set("n", "<F1>", ":Over<CR>")
-    vim.keymap.set("n", "<F2>", ":Step<CR>")
-    vim.keymap.set("n", "<S-F2>", ":Finish<CR>")
+    vim.keymap.set("n", "<F5>", "<cmd>Continue<CR>")
+    vim.keymap.set("n", "<F1>", "<cmd>Over<CR>")
+    vim.keymap.set("n", "<F2>", "<cmd>Step<CR>")
+    vim.keymap.set("n", "<S-F2>", "<cmd>Finish<CR>")
 end
 
 -- From `h g:clipboard`:

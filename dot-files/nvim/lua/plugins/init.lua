@@ -42,10 +42,10 @@ return {
         'tpope/vim-fugitive',
         lazy = false,
         keys = {
-            { "<leader>gs", ":Git<CR><C-w>20_" },
-            { "<leader>gd", ":Gvdiffsplit!<CR>" },
-            { "<leader>ge", ":Gedit<CR>" },
-            { "<leader>gb", ":Git blame -w -C -C -C<CR>" },  -- ignore ws and moved/copied chunks
+            { "<leader>gs", "<cmd>Git<CR><C-w>20_" },
+            { "<leader>gd", "<cmd>Gvdiffsplit!<CR>" },
+            { "<leader>ge", "<cmd>Gedit<CR>" },
+            { "<leader>gb", "<cmd>Git blame -w -C -C -C<CR>" },  -- ignore ws and moved/copied chunks
         },
     },
 
