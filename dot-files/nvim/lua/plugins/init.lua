@@ -1,3 +1,5 @@
+local ft_parentheses = { "lisp", 'clojure', 'scheme', }
+
 return {
     -- the colorscheme should be available when starting Neovim
     {
@@ -148,7 +150,12 @@ return {
 
     {
         'kovisoft/paredit',
-        ft = { "lisp", 'clojure', 'scheme', },
+        ft = ft_parentheses,
+    },
+
+    {
+        'hiphish/rainbow-delimiters.nvim',
+        ft = ft_parentheses,
     },
 
 }
