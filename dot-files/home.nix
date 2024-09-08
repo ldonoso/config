@@ -10,6 +10,9 @@
   home.username = "ldonoso";
   home.homeDirectory = "/home/ldonoso";
 
+  # enable settings that make Home Manager work better on GNU/Linux distributions other than NixOS.
+  targets.genericLinux.enable = true;
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -67,8 +70,10 @@
       cd-logs = "cd $(ls -td -- ~/win/src/TestingEnvironment/Logs/*/ | head -n 1)";
     };
 
-    history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
 
     oh-my-zsh = {
       enable = true;
@@ -117,6 +122,8 @@
     '';
   };
 
+  programs.bat.enable = true;
+
   home.file = {
     # Building this configuration will create a copy of file in the Nix store.
     # Activating the configuration will then make '~/.gitconfig' a symlink to the Nix store copy.
@@ -136,5 +143,4 @@
     '';
   };
 
-  programs.bat.enable = true;
 }
