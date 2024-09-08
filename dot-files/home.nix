@@ -99,21 +99,21 @@
       set -g pane-active-border-style fg=red  # Make active pane noticeable
       set -sa terminal-overrides ",*-256col*:Tc"  # inform tmux its parent terminal supports RGB
 
-      # Resize panes
+      # resize panes
       bind -r H resize-pane -L 5
       bind -r J resize-pane -D 5
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
 
-      # New windows in the current dir
+      # new windows in the current dir
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
 
       # vim keybindings for copy/paste
-      bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind-key -T copy-mode-vi y send-keys -X copy-selection
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind -T copy-mode-vi y send-keys -X copy-selection
     '';
   };
 
