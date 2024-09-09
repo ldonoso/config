@@ -87,8 +87,9 @@ return {
     {
         'christoomey/vim-tmux-navigator',
         lazy = false,
-        -- init is called before the pluging loads. For vim plugins that depend on variables set before loading,
-        -- config called after the plugin is loaded.
+
+        -- init is called before the pluging loads, for plugins that depend on variables set before loading
+        -- config is called after the plugin is loaded
         config = function ()
             vim.g.tmux_navigator_disable_when_zoomed = 1
         end,

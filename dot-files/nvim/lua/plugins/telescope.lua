@@ -37,8 +37,7 @@ return {
                         i = {
                             ['<C-k>'] = lga_actions.quote_prompt(),
                             ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
-                            -- freeze the current list and start a fuzzy search in the frozen list
-                            ['<C-space>'] = actions.to_fuzzy_refine,
+                            ['<C-space>'] = actions.to_fuzzy_refine, -- start a fuzzy search in the current list 
                         },
                     },
                     -- ... also accepts theme settings, for example:
@@ -59,8 +58,8 @@ return {
             return function () func(unpack(args)) end
         end
 
-        vim.keymap.set('n', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', no_ignore = true, }), opts)
-        vim.keymap.set('v', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', no_ignore = true, search_file = vim.fn.expand('<cword>'), }), opts) -- TODO: not correct!
+        vim.keymap.set('n', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', hidden = true, no_ignore = true, }), opts)
+        vim.keymap.set('v', '<C-p>', wrap(builtin.find_files, { layout_strategy = 'current_buffer', hidden = true, no_ignore = true, search_file = vim.fn.expand('<cword>'), }), opts) -- TODO: not correct!
 
         vim.keymap.set('n', '<leader>fg', wrap(telescope.extensions.live_grep_args.live_grep_args, { layout_strategy = 'current_buffer', }), opts)
         vim.keymap.set('v', '<leader>fg', wrap(lga_shortcuts.grep_visual_selection, { layout_strategy = 'current_buffer', }), opts)
@@ -68,7 +67,7 @@ return {
         vim.keymap.set('n', '<leader>fs', wrap(builtin.lsp_dynamic_workspace_symbols, { layout_strategy = 'current_buffer', }), opts)
 
         telescope.load_extension('fzf')
-        telescope.load_extension("live_grep_args")
+        telescope.load_extension('live_grep_args')
 
     end,
 }
