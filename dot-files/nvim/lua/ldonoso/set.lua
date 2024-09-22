@@ -15,8 +15,9 @@ vim.opt.linebreak  = true-- break at a word boundary.
 
 vim.opt.laststatus = 2  -- when the last window will have a status line. 3: always and ONLY the last window
 
-vim.opt.incsearch = true
+vim.opt.incsearch = true  -- incremental search
 vim.opt.hlsearch = true
+
 vim.opt.wrapscan = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -29,6 +30,7 @@ if vim.fn.has("gui_running") == 1 then
     vim.opt.guifont = "Consolas:h11"
 end
 
+vim.opt.scrolloff = 8  -- minimal number of screen lines to keep above and below the cursor.
 vim.opt.colorcolumn = "100"
 vim.opt.background = "dark"
 vim.opt.termguicolors = true -- enables 24-bit RGB color in the TUI
@@ -47,9 +49,10 @@ vim.opt.hidden = true  -- switch between buffers without saving
 -- general encoding settings
 vim.opt.encoding = "utf-8"
 vim.opt.fileformats = { "unix", "dos" }  -- new files will be encoded using unix line termination.
+
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.modeline = true  -- read vim modelines
