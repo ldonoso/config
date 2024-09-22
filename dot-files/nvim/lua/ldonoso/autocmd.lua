@@ -1,7 +1,11 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local LDonosoGroup = augroup('LDonoso', { clear = true })
+-- Create autocmds inside this group so they are not duplicated if autocmd.lua is loaded twice
+local LDonosoGroup = augroup(
+	'LDonoso',
+	{ clear = true } -- clear existing commands if the group exists
+)
 
 -- todo: Investigate why it is necessary
 autocmd({ "BufRead", "BufNewFile", }, {
@@ -43,7 +47,7 @@ autocmd("Filetype", {
 
 autocmd("FileType", {
 	group = LDonosoGroup,
-	pattern = {"xml", "git", },  -- when the event is FileType the pattern is the file type
+	pattern = {"xml", "git", },  -- if event is FileType, the pattern is the file type
 	command = "set foldmethod=syntax",
 })
 
@@ -57,8 +61,9 @@ autocmd({ "BufReadPost", }, {
 -- Highlight on yank
 autocmd('TextYankPost', {
 	group = LDonosoGroup,
+    pattern = "*",
 	callback = function ()
-		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
+		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 1000 })
 	end
 })
 
