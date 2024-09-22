@@ -1,4 +1,3 @@
-
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -19,7 +18,7 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      {'L3MON4D3/LuaSnip'},
+      { 'L3MON4D3/LuaSnip' }, -- todo - configure luasnip
     },
     config = function()
       local cmp = require('cmp')
@@ -31,12 +30,12 @@ return {
         },
 
         completion = {
-          autocomplete = false  -- Invoke completion menu manually
+          autocomplete = false -- Invoke completion menu manually
         },
 
         mapping = cmp.mapping.preset.insert({
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),  -- `Enter` key to confirm completion
-          ['<C-Space>'] = cmp.mapping.complete(),  -- Ctrl+space to trigger completion menu
+          ['<CR>'] = cmp.mapping.confirm({ select = false }), -- `Enter` key to confirm completion
+          ['<C-Space>'] = cmp.mapping.complete(),             -- Ctrl+space to trigger completion menu
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
         }),
@@ -56,13 +55,13 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-    event = {'BufReadPre', 'BufNewFile'},
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-buffer',},  -- Optional
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer', }, -- Optional
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
       local lsp_zero = require('lsp-zero')
@@ -70,7 +69,6 @@ return {
       -- lsp_attach is where you enable features that only work
       -- if there is a language server active in the file
       local lsp_attach = function(client, bufnr)
-
         -- not using `lsp_zero.default_keymaps` because lsp keymaps are not set globally
         -- see :help lsp-zero-keybindings to learn the available actions
 
@@ -85,7 +83,7 @@ return {
         vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
         vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
         vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+        vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
         vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
         vim.keymap.set('n', 'gh', '<cmd>ClangdSwitchSourceHeader<cr>', opts) -- switch .h and .cpp
@@ -99,12 +97,20 @@ return {
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = { 'clangd', },
+        ensure_installed = { 'clangd', 'lua_ls', },
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"
           function(server_name)
             require('lspconfig')[server_name].setup({})
+          end,
+
+          lua_ls = function()
+            require('lspconfig').lua_ls.setup({
+              on_init = function(client)
+                lsp_zero.nvim_lua_settings(client, {})
+              end,
+            })
           end,
         }
       })
