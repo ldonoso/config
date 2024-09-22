@@ -5,7 +5,7 @@ return {
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
-        build = '<cmd>TSUpdate',
+        build = ':TSUpdate',  -- <cmd> not supported!
         config = function ()
             require('nvim-treesitter.configs').setup({
                 -- A list of parser names, or "all"
