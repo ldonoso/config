@@ -3,81 +3,80 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Create autocmds inside this group so they are not duplicated if autocmd.lua is loaded twice
 local LDonosoGroup = augroup(
-	'LDonoso',
-	{ clear = true } -- clear existing commands if the group exists
+    'LDonoso',
+    { clear = true } -- clear existing commands if the group exists
 )
 
 -- todo: Investigate why it is necessary
 autocmd({ "BufRead", "BufNewFile", }, {
-	group = LDonosoGroup,
-	pattern = "*.md",
-	command = "set syntax=markdown",
+    group = LDonosoGroup,
+    pattern = "*.md",
+    command = "set syntax=markdown",
 })
 
 autocmd({ "BufRead", "BufNewFile", }, {
-	group = LDonosoGroup,
-	pattern = "*.qml",
-	command = "setfiletype qmljs",  -- only if filetype has not already been set
+    group = LDonosoGroup,
+    pattern = "*.qml",
+    command = "setfiletype qmljs", -- only if filetype has not already been set
 })
 
 autocmd({ "BufRead", "BufNewFile", }, {
-	group = LDonosoGroup,
-	pattern = "*.make",
-	command = "setfiletype make",  -- only if filetype has not already been set
+    group = LDonosoGroup,
+    pattern = "*.make",
+    command = "setfiletype make", -- only if filetype has not already been set
 })
 
 autocmd({ "BufRead", "BufNewFile", }, {
-	group = LDonosoGroup,
-	pattern = "*.sql",
-	command = "set filetype=sqlinformix",  -- overrides any filetype that has already been set
+    group = LDonosoGroup,
+    pattern = "*.sql",
+    command = "set filetype=sqlinformix", -- overrides any filetype that has already been set
 })
 
 autocmd({ "BufRead", "BufNewFile", }, {
-	group = LDonosoGroup,
-	pattern = "*.ic",
-	command = "set filetype=cpp",  -- overrides any filetype that has already been set
+    group = LDonosoGroup,
+    pattern = "*.ic",
+    command = "set filetype=cpp", -- overrides any filetype that has already been set
 })
 
 -- open a quickfix item in a new window
 autocmd("Filetype", {
-	group = LDonosoGroup,
-	pattern = "qf",
-	command = "nnoremap <buffer> <localleader><Enter> <C-w><Enter><C-w>L",
+    group = LDonosoGroup,
+    pattern = "qf",
+    command = "nnoremap <buffer> <localleader><Enter> <C-w><Enter><C-w>L",
 })
 
 autocmd("FileType", {
-	group = LDonosoGroup,
-	pattern = {"xml", "git", },  -- if event is FileType, the pattern is the file type
-	command = "set foldmethod=syntax",
+    group = LDonosoGroup,
+    pattern = { "xml", "git", }, -- if event is FileType, the pattern is the file type
+    command = "set foldmethod=syntax",
 })
 
 -- last-position-jump
 autocmd({ "BufReadPost", }, {
-	group = LDonosoGroup,
-	pattern = "*",
-	command = [[if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif]],
+    group = LDonosoGroup,
+    pattern = "*",
+    command = [[if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif]],
 })
 
 -- Highlight on yank
 autocmd('TextYankPost', {
-	group = LDonosoGroup,
+    group = LDonosoGroup,
     pattern = "*",
-	callback = function ()
-		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 1000 })
-	end
+    callback = function()
+        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 1000 })
+    end
 })
 
 -- Remove whitespaces
-autocmd({"BufWritePre"}, {
-	group = LDonosoGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
+autocmd({ "BufWritePre" }, {
+    group = LDonosoGroup,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
 })
 
 -- Make panels equal size when main window is resized
-autocmd({"VimResized"}, {
-	group = LDonosoGroup,
-	pattern = "*",
-	command = [[ wincmd = ]],
+autocmd({ "VimResized" }, {
+    group = LDonosoGroup,
+    pattern = "*",
+    command = [[ wincmd = ]],
 })
-

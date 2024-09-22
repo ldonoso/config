@@ -1,15 +1,14 @@
-
 return {
     {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
-        build = ':TSUpdate',  -- <cmd> not supported!
-        config = function ()
+        build = ':TSUpdate', -- <cmd> not supported!
+        config = function()
             require('nvim-treesitter.configs').setup({
                 -- A list of parser names, or "all"
-                ensure_installed = { "vimdoc", "lua", "cpp", "c", "sql", "markdown", "haskell", "commonlisp", },
+                ensure_installed = { "vimdoc", "lua", "cpp", "c", "sql", "markdown", "markdown_inline", "haskell", "commonlisp", },
 
                 highlight = {
                     enable = true,
@@ -27,7 +26,6 @@ return {
             -- folding using treesitter
             vim.opt.foldmethod = 'expr'
             vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
         end,
     },
 

@@ -61,14 +61,20 @@ vim.opt.modeline = true  -- read vim modelines
 vim.opt.splitbelow = true  -- split will put the new window below of the current one
 vim.opt.splitright = true  -- vsplit will put the new window right of the current one
 
-vim.opt.clipboard = "unnamedplus"  -- use the clipboard (instead of the '+' and/or '*' registers)
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+    vim.opt.clipboard = 'unnamedplus'
+end)
 
 vim.opt.backspace = { "indent", "eol", "start" }  -- backspace behave like you expect and go through everything
 
 vim.opt.diffopt:append({
-	"vertical",
-	"indent-heuristic",
-	"algorithm:patience",
-	"linematch:60",
+    "vertical",
+    "indent-heuristic",
+    "algorithm:patience",
+    "linematch:60",
 })
 

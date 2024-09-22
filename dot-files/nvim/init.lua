@@ -21,23 +21,23 @@ require('lazy').setup("plugins", {})
 -- }
 
 if vim.fn.executable('rg') == 1 then
-    vim.opt.grepprg = "rg --vimgrep --smart-case"  -- program to use for the :grep command
+    vim.opt.grepprg = "rg --vimgrep --smart-case" -- program to use for the :grep command
 end
 
-vim.g.rtagsUseLocationList = 0  -- Use QuickList
+vim.g.rtagsUseLocationList = 0 -- Use QuickList
 
-vim.cmd [[ syntax on ]]  -- implies filetype on
+vim.cmd [[ syntax on ]]        -- implies filetype on
 
 -- tags. One tag file per directory and a general one
 -- in the working directory with the non-static definitions
-vim.opt.tags = { "./.tags", ".tags" }  -- Look for tags in current dir and in working dir
+vim.opt.tags = { "./.tags", ".tags" } -- Look for tags in current dir and in working dir
 
 -- Build the tag file in the dir of the current file
 vim.keymap.set("t", ",t", "<cmd>!(cd %:p:h; ctags -f .tags *)&")
 
 -- folding
 vim.opt.foldnestmax = 10
-vim.opt.foldenable = false  -- all folds are open
+vim.opt.foldenable = false -- all folds are open
 vim.opt.foldlevel = 2
 vim.g.xml_syntax_folding = 1
 

@@ -123,6 +123,8 @@ return {
             require('lualine').setup({
              -- sections = { lualine_c = {'filename', 'nvim_treesitter#statusline', }, },
             })
+
+            vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
         end,
     },
 
