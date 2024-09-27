@@ -28,6 +28,12 @@
 
   services.lorri.enable = true;
 
+  services.gpg-agent = {
+    enable = true;
+    # it must ve GUI tool in order to for with vim-fugitive https://github.com/tpope/vim-fugitive/issues/846#issuecomment-521816260
+    pinentryPackage = pkgs.pinentry-qt;
+  };
+
   home.packages = [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -44,6 +50,7 @@
 
     pkgs.git
     pkgs.ack
+    pkgs.pinentry-qt
 
     pkgs.universal-ctags  # vim.Tagbar
     pkgs.clang  # nvim.treesitter
