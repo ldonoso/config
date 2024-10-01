@@ -28,12 +28,6 @@
 
   services.lorri.enable = true;
 
-  services.gpg-agent = {
-    enable = true;
-    # it must ve GUI tool in order to for with vim-fugitive https://github.com/tpope/vim-fugitive/issues/846#issuecomment-521816260
-    pinentryPackage = pkgs.pinentry-qt;
-  };
-
   home.packages = [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -61,10 +55,15 @@
 
     pkgs.tree
     pkgs.pandoc
+
+    # N.B. Automatically integrated with the shell
+    # To use it, create a `.envrc` file with your local config
     pkgs.direnv
+
     pkgs.gnumake
     pkgs.xsel  # tmux-yank
-  ];
+    pkgs.dos2unix
+ ];
 
   programs.zsh = {
     enable = true;
@@ -87,7 +86,7 @@
       plugins = [ "vi-mode" "direnv" ];
       theme = "robbyrussell";
       extraConfig = ''
-        VI_MODE_SET_CURSOR=true  # the cursor style is changed when switching to a different input mode
+        VI_MODE_SET_CURSOR=true  # the cursor style changes when switching to a different input mode
       '';
     };
   };
