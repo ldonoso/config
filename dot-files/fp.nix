@@ -3,24 +3,35 @@
 {
   imports = [ ./home.nix ];
 
-  services.gpg-agent = {
+  services.gpg-agent = let ttl_secs = 8 * 60 * 60;
+  in {
     enable = true;
-    # it must ve GUI tool in order to for with vim-fugitive https://github.com/tpope/vim-fugitive/issues/846#issuecomment-521816260
-    defaultCacheTtl = 8 * 60 * 60; # secs
-    maxCacheTtl =  8 * 60 * 60; # secs
+    defaultCacheTtl = ttl_secs;
+    maxCacheTtl =  ttl_secs;
     pinentryPackage = pkgs.pinentry-qt;
   };
+
+  services.ssh-agent.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    includes = [
+      "$HOME/.ssh/ssh.config.*"
+    ];
+  };
+
+  # N.B. this packages are automatically merged with the ones in home.nix
+  home.packages = [
+    pkgs.pinentry-qt
+    pkgs.ninja
+    pkgs.cmake
+    pkgs.nodejs_22 # so mason can insall pyright lsp
+  ];
 
   programs.zsh = {
     shellAliases = {
       my-ls = "ll";
     };
   };
-
-  # N.B. this packages are automatically merged with the ones in home.nix
-  home.packages = [
-    pkgs.ninja
-    pkgs.cmake
-    pkgs.nodejs_22 # so mason can insall pyright lsp
-  ];
 }

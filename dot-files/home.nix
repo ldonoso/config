@@ -44,7 +44,6 @@
 
     pkgs.git
     pkgs.ack
-    pkgs.pinentry-qt
 
     pkgs.universal-ctags  # vim.Tagbar
     pkgs.clang  # nvim.treesitter
