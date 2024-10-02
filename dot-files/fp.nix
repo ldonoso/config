@@ -26,7 +26,8 @@
     pkgs.pinentry-qt
     pkgs.ninja
     pkgs.cmake
-    pkgs.nodejs_22 # so mason can insall pyright lsp
+    pkgs.nodejs_22 # so mason can install pyright lsp
+    pkgs.poppler_utils # to convert pdf to png
   ];
 
   programs.zsh = {
