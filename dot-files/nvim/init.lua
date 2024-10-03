@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- { Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -10,64 +10,16 @@ if not vim.loop.fs_stat(lazypath) then
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        "--branch=stable",
         lazypath,
     })
 end
+
+-- Add lazy to the `runtimepath`, this allows us to `require` it
 vim.opt.rtp:prepend(lazypath)
 
+-- Set up lazy, and load my `lua/plugins/` folder
 require('lazy').setup("plugins", {})
-
--- }
-
-if vim.fn.executable('rg') == 1 then
-    vim.opt.grepprg = "rg --vimgrep --smart-case" -- program to use for the :grep command
-end
-
-vim.g.rtagsUseLocationList = 0 -- Use QuickList
 
 vim.cmd [[ syntax on ]]        -- implies filetype on
 
--- tags. One tag file per directory and a general one
--- in the working directory with the non-static definitions
-vim.opt.tags = { "./.tags", ".tags" } -- Look for tags in current dir and in working dir
-
--- Build the tag file in the dir of the current file
-vim.keymap.set("t", ",t", "<cmd>!(cd %:p:h; ctags -f .tags *)&")
-
--- folding
-vim.opt.foldnestmax = 10
-vim.opt.foldenable = false -- all folds are open
-vim.opt.foldlevel = 2
-vim.g.xml_syntax_folding = 1
-
--- clang format
-vim.keymap.set("n", "<leader>cf", "<cmd>py3f /usr/share/clang/clang-format-10/clang-format.py<cr>")
-vim.g.clang_format_fallback_style = 'none'
-
--- termdebug
-if vim.fn.has('win32') == 0 then
-    -- https://gavinhoward.com/2020/12/my-development-environment-and-how-i-got-there/
-    vim.cmd [[ packadd termdebug ]]
-    vim.g.termdebug_wide = 1
-    vim.keymap.set("n", "<F5>", "<cmd>Continue<CR>")
-    vim.keymap.set("n", "<F1>", "<cmd>Over<CR>")
-    vim.keymap.set("n", "<F2>", "<cmd>Step<CR>")
-    vim.keymap.set("n", "<S-F2>", "<cmd>Finish<CR>")
-end
-
--- From `h g:clipboard`:
-if vim.fn.has("wsl") == 1 then
-    vim.g.clipboard = {
-        name = 'WslClipboard',
-        copy = {
-            ['+'] = 'clip.exe',
-            ['*'] = 'clip.exe',
-        },
-        paste = {
-            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        },
-        cache_enabled = 0,
-    }
-end
