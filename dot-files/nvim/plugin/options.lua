@@ -23,7 +23,7 @@ opt.hlsearch          = true
 
 opt.wrapscan          = true
 
-opt.inccommand        = "split"
+opt.inccommand        = "split" -- Preview substitutions live, as you type!
 opt.ignorecase        = true
 opt.smartcase         = true
 

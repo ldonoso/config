@@ -50,8 +50,8 @@ autocmd({ "BufReadPost", }, {
     command = [[if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif]],
 })
 
--- Highlight on yank
 autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
     group = augroup,
     pattern = "*",
     callback = function()
