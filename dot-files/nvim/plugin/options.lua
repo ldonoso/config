@@ -22,6 +22,8 @@ opt.incsearch         = true -- incremental search
 opt.hlsearch          = true
 
 opt.wrapscan          = true
+
+opt.inccommand        = "split"
 opt.ignorecase        = true
 opt.smartcase         = true
 
