@@ -3,7 +3,7 @@ return {
     event = 'InsertEnter',
     dependencies = {
         {
-            'L3MON4D3/LuaSnip',
+            'L3MON4D3/LuaSnip', -- snippet engine
             build = (function()
                 -- Build Step is needed for regex support in snippets.
                 -- This step is not supported in many windows environments.
@@ -14,18 +14,15 @@ return {
                 return 'make install_jsregexp'
             end)(),
             dependencies = {
-                -- `friendly-snippets` contains a variety of premade snippets.
-                --    See the README about individual language/framework/plugin snippets:
-                --    https://github.com/rafamadriz/friendly-snippets
-                -- {
-                --   'rafamadriz/friendly-snippets',
-                --   config = function()
-                --     require('luasnip.loaders.from_vscode').lazy_load()
-                --   end,
-                -- },
+                {
+                    'rafamadriz/friendly-snippets',
+                    config = function()
+                        require('luasnip.loaders.from_vscode').lazy_load() -- add snippets to luasnip
+                    end,
+                },
             },
         },
-        'saadparwaiz1/cmp_luasnip', -- snippets plugin
+        'saadparwaiz1/cmp_luasnip', -- luasnip completion source - makes LuaSnip work with nvim-cmp
     },
     config = function()
         local cmp = require('cmp')
