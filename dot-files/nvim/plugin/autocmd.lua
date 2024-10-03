@@ -37,13 +37,6 @@ autocmd({ "BufRead", "BufNewFile", }, {
     command = "set filetype=cpp", -- overrides any filetype that has already been set
 })
 
--- open a quickfix item in a new window
-autocmd("Filetype", {
-    group = augroup,
-    pattern = "qf",
-    command = "nnoremap <buffer> <localleader><Enter> <C-w><Enter><C-w>L",
-})
-
 autocmd("FileType", {
     group = augroup,
     pattern = { "xml", "git", }, -- if event is FileType, the pattern is the file type

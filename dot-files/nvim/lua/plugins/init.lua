@@ -5,21 +5,21 @@ return {
     {
         'morhetz/gruvbox',
         enabled = false,
-        lazy = false,  -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000,  -- make sure to load this before all the other start plugins
-        config = function ()
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
             vim.g.gruvbox_italic = 0
             vim.cmd([[colorscheme gruvbox]])
         end,
     },
 
-    {  -- treesitter and semantic highlights support
+    { -- treesitter and semantic highlights support
         -- 'ellisonleao/gruvbox.nvim',
         'sainnhe/gruvbox-material',
         enabled = true,
-        lazy = false,  -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000,  -- make sure to load this before all the other start plugins
-        config = function ()
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
             vim.cmd([[colorscheme gruvbox-material]])
         end,
     },
@@ -28,10 +28,10 @@ return {
     'ivanov/vim-ipython',
 
     {
-        'preservim/tagbar',  -- requires universal ctags
+        'preservim/tagbar', -- requires universal ctags
         -- autocmd FileType tagbar setlocal nocursorline nocursorcolumn  " for tagbar slowness
-        config = function ()
-            vim.g.tagbar_iconchars = {'', '▼' }
+        config = function()
+            vim.g.tagbar_iconchars = { '', '▼' }
         end,
     },
 
@@ -47,12 +47,12 @@ return {
             { "<leader>gs", "<cmd>Git<CR><C-w>20_" },
             { "<leader>gd", "<cmd>Gvdiffsplit!<CR>" },
             { "<leader>ge", "<cmd>Gedit<CR>" },
-            { "<leader>gb", "<cmd>Git blame -w -C -C -C<CR>" },  -- ignore ws and moved/copied chunks
+            { "<leader>gb", "<cmd>Git blame -w -C -C -C<CR>" }, -- ignore ws and moved/copied chunks
         },
     },
 
-    'tpope/vim-rhubarb',  -- GBrowse github
-    'tommcdo/vim-fubitive',  -- GBrowse bitbucket
+    'tpope/vim-rhubarb',    -- GBrowse github
+    'tommcdo/vim-fubitive', -- GBrowse bitbucket
     'junegunn/gv.vim',
 
     'tpope/vim-repeat',
@@ -73,7 +73,7 @@ return {
                 desc = "line diff between two diff markers",
             },
         },
-        config = function ()
+        config = function()
             vim.g.linediff_first_buffer_command = 'leftabove new'
             vim.g.linediff_further_buffer_command = 'rightbelow vertical new'
         end,
@@ -90,7 +90,7 @@ return {
 
         -- init is called before the pluging loads, for plugins that depend on variables set before loading
         -- config is called after the plugin is loaded
-        config = function ()
+        config = function()
             vim.g.tmux_navigator_disable_when_zoomed = 1
         end,
 
@@ -103,25 +103,25 @@ return {
         },
 
         keys = {
-            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 
-            { "<c-h>", "<c-\\><c-n>:TmuxNavigateLeft<cr>", mode = "t", silent = true },
-            { "<c-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>", mode = "t", silent = true },
-            { "<c-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>", mode = "t", silent = true },
-            { "<c-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>", mode = "t", silent = true },
+            { "<c-h>",  "<c-\\><c-n>:TmuxNavigateLeft<cr>",  mode = "t", silent = true },
+            { "<c-j>",  "<c-\\><c-n>:TmuxNavigateDown<cr>",  mode = "t", silent = true },
+            { "<c-k>",  "<c-\\><c-n>:TmuxNavigateUp<cr>",    mode = "t", silent = true },
+            { "<c-l>",  "<c-\\><c-n>:TmuxNavigateRight<cr>", mode = "t", silent = true },
         },
     },
 
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', },
-        config = function ()
+        config = function()
             require('lualine').setup({
-             -- sections = { lualine_c = {'filename', 'nvim_treesitter#statusline', }, },
+                -- sections = { lualine_c = {'filename', 'nvim_treesitter#statusline', }, },
             })
 
             vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
@@ -130,15 +130,15 @@ return {
 
     {
         'editorconfig/editorconfig-vim',
-        config = function ()
+        config = function()
             -- To ensure that this plugin works well with Tim Pope's fugitive
-            vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', }
+            vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', }
         end,
     },
 
     {
         'lfv89/vim-interestingwords',
-        config = function ()
+        config = function()
             vim.g.interestingWordsGUIColors = { '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF', }
         end,
     },
@@ -146,7 +146,7 @@ return {
     {
         'vlime/vlime',
         ft = { "lisp", },
-        config = function (plugin)
+        config = function(plugin)
             vim.opt.rtp:append(plugin.dir .. "/vim")
         end,
     },
@@ -161,4 +161,8 @@ return {
         ft = ft_parentheses,
     },
 
+    {
+        "stevearc/qf_helper.nvim",
+        opts = {},
+    },
 }
