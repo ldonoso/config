@@ -1,12 +1,10 @@
--- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.schedule(function()
+    -- Sync clipboard between OS and Neovim. Remove this option if you want your OS clipboard to remain independent.
     vim.opt.clipboard = 'unnamedplus'
 end)
 
--- From `h g:clipboard`:
+-- WSL clipboard provider. Not required
 if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
         name = 'WslClipboard',

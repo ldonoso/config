@@ -59,7 +59,7 @@
     pkgs.direnv
 
     pkgs.gnumake
-    pkgs.xsel  # tmux-yank
+    pkgs.xsel  # tmux-yank on linux (windows uses the installed by default clip.exe)
     pkgs.dos2unix
  ];
 
@@ -106,10 +106,10 @@
     keyMode = "vi";
     mouse = false;
 
-    plugins = with pkgs; [
-      tmuxPlugins.sensible
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.yank
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      vim-tmux-navigator
+      yank # copy to the system clipboard in tmux
     ];
 
     extraConfig = ''
