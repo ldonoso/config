@@ -28,6 +28,8 @@
     pkgs.cmake
     pkgs.nodejs_22 # so mason can install pyright lsp
     pkgs.poppler_utils # to convert pdf to png
+    pkgs.jq
+    pkgs.gh
   ];
 
   programs.zsh = {

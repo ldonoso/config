@@ -50,7 +50,6 @@
     pkgs.unzip  # nvim.mason
     pkgs.ripgrep  # nvim.telescope
     pkgs.fd  # nvim.telescope
-    pkgs.neovim
 
     pkgs.tree
     pkgs.pandoc
@@ -63,6 +62,15 @@
     pkgs.xsel  # tmux-yank
     pkgs.dos2unix
  ];
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withPython3 = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -143,9 +151,12 @@
       recursive = true;
     };
 
-    "nix/nix.conf".text = ''
-      extra-experimental-features = nix-command flakes
-    '';
+    "nix/nix.conf" = {
+      enable = false; # Whether this file should be generated. This option allows specific files to be disabled.
+      text = ''
+        extra-experimental-features = nix-command flakes
+      '';
+    };
   };
 
 }
