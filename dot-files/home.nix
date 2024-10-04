@@ -23,7 +23,6 @@
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   services.lorri.enable = true;
@@ -46,7 +45,6 @@
     pkgs.ack
 
     pkgs.universal-ctags  # vim.Tagbar
-    pkgs.clang  # nvim.treesitter
     pkgs.unzip  # nvim.mason
     pkgs.ripgrep  # nvim.telescope
     pkgs.fd  # nvim.telescope
@@ -64,7 +62,7 @@
  ];
 
   programs.neovim = {
-    enable = true;
+    enable = true; # home.sessionVariables = { EDITOR = "nvim"; };
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
