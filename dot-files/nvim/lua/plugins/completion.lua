@@ -23,6 +23,7 @@ return {
             },
         },
         'saadparwaiz1/cmp_luasnip', -- luasnip completion source - makes LuaSnip work with nvim-cmp
+        'hrsh7th/cmp-buffer',
     },
     config = function()
         local cmp = require('cmp')

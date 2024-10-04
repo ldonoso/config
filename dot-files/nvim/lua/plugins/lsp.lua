@@ -16,18 +16,17 @@ return {
 
   -- LSP
   {
-    'neovim/nvim-lspconfig',
+    'neovim/nvim-lspconfig', -- configs for the nvim LSP client
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer', }, -- Optional
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      { 'williamboman/mason.nvim' }, -- install and manage LSP servers
+      { 'williamboman/mason-lspconfig.nvim' }, -- bridges mason.nvim and lspconfig
       {
         'j-hui/fidget.nvim', -- Useful status updates for LSP
         opts = {}            -- the same as calling `require('fidget').setup({})`
       },
+      { 'hrsh7th/cmp-nvim-lsp' },
     },
     config = function()
       local lsp_zero = require('lsp-zero')
