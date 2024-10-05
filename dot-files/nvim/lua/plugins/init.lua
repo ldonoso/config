@@ -55,7 +55,7 @@ return {
     'tommcdo/vim-fubitive', -- GBrowse bitbucket
     'junegunn/gv.vim',
 
-    'tpope/vim-repeat',
+    'tpope/vim-repeat', -- enable repeating supported plugin maps with `.`
     'tpope/vim-surround',
     'tpope/vim-unimpaired',
     'tpope/vim-vinegar',

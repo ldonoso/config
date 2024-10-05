@@ -3,6 +3,7 @@ return {
     event = 'InsertEnter',
     dependencies = {
         {
+            { 'hrsh7th/cmp-nvim-lsp' },
             'L3MON4D3/LuaSnip', -- snippet engine
             build = (function()
                 -- Build Step is needed for regex support in snippets.
@@ -96,9 +97,6 @@ return {
                     end
                 end, { 'i', 's' }),
             }),
-
-            -- (Optional) Show source name in completion menu
-            formatting = require('lsp-zero').cmp_format(),
         })
     end
 }
