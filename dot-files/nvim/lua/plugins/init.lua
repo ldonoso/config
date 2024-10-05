@@ -160,9 +160,4 @@ return {
         'hiphish/rainbow-delimiters.nvim',
         ft = ft_parentheses,
     },
-
-    {
-        "stevearc/qf_helper.nvim",
-        opts = {},
-    },
 }
