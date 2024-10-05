@@ -32,10 +32,8 @@ return {
         luasnip.config.setup {}
 
         cmp.setup({
-            view = {
-                docs = {
-                    auto_open = true,
-                },
+            vindow = {
+                documentation = cmp.config.window.bordered()
             },
 
             -- enable luasnip to handle snippet expansion for nvim-cmp
@@ -77,14 +75,7 @@ return {
                 --  completions whenever it has completion options available.
                 ['<C-Space>'] = cmp.mapping.complete(),
 
-                -- Think of <c-l> as moving to the right of your snippet expansion.
-                --  So if you have a snippet that's like:
-                --  function $name($args)
-                --    $body
-                --  end
-                --
-                -- <c-l> will move you to the right of each of the expansion locations.
-                -- <c-h> is similar, except moving you backwards.
+                -- jump to next placeholder in the snippet
                 ['<C-l>'] = cmp.mapping(function()
                     if luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
