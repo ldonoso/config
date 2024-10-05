@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   imports = [ ./home.nix ];
 
   services.gpg-agent = let ttl_secs = 8 * 60 * 60;

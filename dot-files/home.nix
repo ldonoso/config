@@ -1,8 +1,6 @@
 # apply wih `home-manager switch`
 
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -78,7 +76,6 @@
 
     shellAliases = {
       html-to-md = "pandoc --standalone --eol=lf -f html-native_divs-native_spans -t gfm --wrap=none --markdown-headings=atx";
-      cd-logs = "cd $(ls -td -- ~/win/src/TestingEnvironment/Logs/*/ | head -n 1)";
     };
 
     history = {
@@ -138,14 +135,13 @@
   home.file = {
     # Building this configuration will create a copy of file in the Nix store.
     # Activating the configuration will then make '~/.gitconfig' a symlink to the Nix store copy.
-    # todoluis - use variables
-    ".gitconfig".source = /home/ldonoso/src/config/dot-files/dot-gitconfig;
-    ".gitignore".source = /home/ldonoso/src/config/dot-files/dot-gitignore;
+    ".gitconfig".source = ./dot-gitconfig;
+    ".gitignore".source = ./dot-gitignore;
   };
 
   xdg.configFile = {
     "nvim" = {
-      source = /home/ldonoso/src/config/dot-files/nvim;
+      source = ./nvim;
       recursive = true;
     };
 

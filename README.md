@@ -9,9 +9,9 @@
 
 - Install the [Nix package manager](https://nixos.org/download.html#nix-quick-install)
 
-- Clone this repo to `~/src/config/`:
+- Clone this repo:
 
-     nix-shell -p git --command "git clone git@github.com:ldonoso/config.git $HOME/src/config"
+     nix-shell -p git --command "git clone git@github.com:ldonoso/config.git"
 
 - Install [Home Manager](https://github.com/nix-community/home-manager#installation)
 
