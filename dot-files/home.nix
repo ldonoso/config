@@ -6,7 +6,7 @@
 
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "ldonoso";
-  home.homeDirectory = "/home/ldonoso";
+  home.homeDirectory = "/home/${config.home.username}";
 
   # enable settings that make Home Manager work better on GNU/Linux distributions other than NixOS.
   targets.genericLinux.enable = true;
@@ -133,16 +133,17 @@
   programs.bat.enable = true;
 
   home.file = {
-    # Building this configuration will create a copy of file in the Nix store.
-    # Activating the configuration will then make '~/.gitconfig' a symlink to the Nix store copy.
-    ".gitconfig".source = ./dot-gitconfig;
+    ".gitconfig".source = ./dot-gitconfig;  # create a copy in the store and a symlink to the copy
     ".gitignore".source = ./dot-gitignore;
   };
 
   xdg.configFile = {
-    "nvim" = {
+    "nvim/" = {
       source = ./nvim;
-      recursive = true;
+      # If false then the target will be a link to the source dir.
+      # If true then the target will be a dir structure matching the source's
+      # but whose leafs are links to the files of the source dir.
+      recursive = false;
     };
 
     "nix/nix.conf" = {
