@@ -16,7 +16,6 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.g.gruvbox_italic = 0
             vim.cmd([[colorscheme gruvbox]])
         end,
     },
@@ -27,6 +26,16 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            require("gruvbox").setup({
+                italic = {
+                    strings = false,
+                    emphasis = false,
+                    comments = false,
+                    operators = false,
+                    folds = false,
+                },
+            })
+
             vim.cmd([[colorscheme gruvbox]])
         end,
     },
