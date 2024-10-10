@@ -20,19 +20,26 @@
   };
 
   # N.B. this packages are automatically merged with the ones in home.nix
-  home.packages = [
-    pkgs.pinentry-qt
-    pkgs.ninja
-    pkgs.cmake
-    pkgs.nodejs_22 # so mason can install pyright lsp
-    pkgs.poppler_utils # to convert pdf to png
-    pkgs.jq
-    pkgs.gh
+  home.packages = with pkgs; [
+    pinentry-qt
+    ninja
+    cmake
+    nodejs_22 # so mason can install pyright lsp
+    poppler_utils # to convert pdf to png
+    jq
+    gh
+    wslu
   ];
 
   programs.zsh = {
     shellAliases = {
-      my-ls = "ll";
     };
+
+    envExtra = ''
+      # Works as an alias but with parameters
+      function mym () {
+        make DIR_PROJECT='./' -f $HOME/src/facephi/Makefile $@
+      }
+    '';
   };
 }
