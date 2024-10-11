@@ -2,7 +2,6 @@ local ft_parentheses = { "lisp", 'clojure', 'scheme', }
 
 return {
     'godlygeek/tabular',
-    'ivanov/vim-ipython',
 
     {
         'preservim/tagbar', -- requires universal ctags
@@ -13,24 +12,6 @@ return {
     },
 
     'nelstrom/vim-visual-star-search',
-    'tpope/vim-dispatch',
-
-    'idanarye/vim-merginal',
-
-    {
-        'tpope/vim-fugitive',
-        lazy = false,
-        keys = {
-            { "<leader>gs", "<cmd>Git<CR><C-w>20_" },
-            { "<leader>gd", "<cmd>Gvdiffsplit!<CR>" },
-            { "<leader>ge", "<cmd>Gedit<CR>" },
-            { "<leader>gb", "<cmd>Git blame -w -C -C -C<CR>" }, -- ignore ws and moved/copied chunks
-        },
-    },
-
-    'tpope/vim-rhubarb',    -- GBrowse github
-    'tommcdo/vim-fubitive', -- GBrowse bitbucket
-    'junegunn/gv.vim',
 
     'tpope/vim-repeat', -- enable repeating supported plugin maps with `.`
     'tpope/vim-surround',
@@ -55,11 +36,6 @@ return {
             vim.g.linediff_further_buffer_command = 'rightbelow vertical new'
         end,
     },
-
-    --{
-    --    'davidhalter/jedi-vim',
-    --    ft = 'python'
-    --},
 
     {
         'christoomey/vim-tmux-navigator',
@@ -93,7 +69,7 @@ return {
         },
     },
 
-    {
+    { -- todo: show current method
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', },
         config = function()
