@@ -8,7 +8,7 @@ return {
         config = function()
             require('nvim-treesitter.configs').setup({
                 -- A list of parser names, or "all"
-                ensure_installed = { "vimdoc", "lua", "cpp", "c", "sql", "markdown", "markdown_inline", "haskell", "commonlisp", },
+                ensure_installed = { "vimdoc", "lua", "cpp", "c", "sql", "markdown", "markdown_inline", "haskell", "commonlisp", "nix", },
 
                 highlight = {
                     enable = true,

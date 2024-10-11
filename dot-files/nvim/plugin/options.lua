@@ -7,11 +7,14 @@ opt.mouse             = {}   -- disable mouse
 opt.cursorline        = true -- highlight current line
 opt.belloff           = "all"
 opt.wildignore        = { '*.o', '*.obj', '*.swp' }
-vim.g.netrw_hide      = 1    -- not show hidden files
+
+vim.g.netrw_hide      = 1  -- not show hidden files
 vim.g.netrw_list_hide = [[.*\.swp$]]
-vim.g.netrw_preview   = 1    -- Make vertical splitting the default for previewing files
---vim.g.netrw_liststyle = 3  -- Make the default listing style "tree"
-vim.g.netrw_winsize   = 30   -- When a vertical preview window is opened, the directory listing will use only 30%
+vim.g.netrw_preview   = 1  -- vertical splitting for previewing files
+vim.g.netrw_altv      = 1  -- preview on a right panel. It doesn't seem to work
+vim.g.netrw_liststyle = 3  -- listing style "tree"
+vim.g.netrw_winsize   = 30 -- when a vertical preview window is opened, the directory listing will use only 30%
+
 opt.wrap              = true
 opt.breakindent       = true -- Every wrapped line will continue visually indented (same amount of space as the beginning of that line), thus preserving horizontal blocks of text.
 opt.linebreak         = true -- break at a word boundary.
