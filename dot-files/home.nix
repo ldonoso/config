@@ -25,7 +25,7 @@
 
   services.lorri.enable = true;
 
-  home.packages = [
+  home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -39,24 +39,24 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.git
-    pkgs.ack
+    git
+    ack
 
-    pkgs.universal-ctags  # vim.Tagbar
-    pkgs.unzip  # nvim.mason
-    pkgs.ripgrep  # nvim.telescope
-    pkgs.fd  # nvim.telescope
+    universal-ctags  # vim.Tagbar
+    unzip  # nvim.mason
+    ripgrep  # nvim.telescope
+    fd  # nvim.telescope
 
-    pkgs.tree
-    pkgs.pandoc
+    tree
+    pandoc
 
     # N.B. Automatically integrated with the shell
     # To use it, create a `.envrc` file with your local config
-    pkgs.direnv
+    direnv
 
-    pkgs.gnumake
-    pkgs.xsel  # tmux-yank on linux (windows uses the installed by default clip.exe)
-    pkgs.dos2unix
+    gnumake
+    xsel  # tmux-yank on linux (windows uses the installed by default clip.exe)
+    dos2unix
  ];
 
   programs.neovim = {

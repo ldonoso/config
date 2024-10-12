@@ -5,22 +5,12 @@ return {
         {
             { 'hrsh7th/cmp-nvim-lsp' },
             'L3MON4D3/LuaSnip', -- snippet engine
-            build = (function()
-                -- Build Step is needed for regex support in snippets.
-                -- This step is not supported in many windows environments.
-                -- Remove the below condition to re-enable on windows.
-                if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-                    return
-                end
-                return 'make install_jsregexp'
-            end)(),
-            dependencies = {
-                {
-                    'rafamadriz/friendly-snippets',
-                    config = function()
-                        require('luasnip.loaders.from_vscode').lazy_load() -- add snippets to luasnip
-                    end,
-                },
+            build = 'make install_jsregexp',
+            { -- N.B. If defined as a dependency of LuaSnip, Lazy vim thinks it is not installed
+                'rafamadriz/friendly-snippets',
+                config = function()
+                    require('luasnip.loaders.from_vscode').lazy_load() -- add snippets to luasnip
+                end,
             },
         },
         'saadparwaiz1/cmp_luasnip', -- luasnip completion source - makes LuaSnip work with nvim-cmp
