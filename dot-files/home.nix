@@ -131,6 +131,12 @@
   };
 
   programs.bat.enable = true;
+  programs.fzf.enable = true;
+
+  programs.zoxide = {
+    enable = true;
+    options = ["--cmd cd"]; # replace cd, adds cdi
+  };
 
   home.file = {
     ".gitconfig".source = ./dot-gitconfig;  # create a copy in the store and a symlink to the copy

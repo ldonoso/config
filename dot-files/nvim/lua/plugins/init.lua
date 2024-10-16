@@ -69,11 +69,12 @@ return {
         },
     },
 
-    { -- todo: show current method
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', },
         config = function()
             require('lualine').setup({
+                -- todo: show current method - this doesn't work
                 -- sections = { lualine_c = {'filename', 'nvim_treesitter#statusline', }, },
             })
 
@@ -98,7 +99,7 @@ return {
 
     {
         'vlime/vlime',
-        ft = { "lisp", },
+        ft = { 'lisp', },
         config = function(plugin)
             vim.opt.rtp:append(plugin.dir .. "/vim")
         end,
