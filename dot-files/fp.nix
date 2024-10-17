@@ -37,8 +37,10 @@
 
     envExtra = ''
       # Works as an alias but with parameters
-      function mym () {
-        make DIR_PROJECT='./' -f $HOME/src/facephi/Makefile $@
+      mym () {
+        # Double quotes around $@ prevents globbing and word splitting of individual elements,
+        # while still expanding to multiple separate arguments
+        make DIR_PROJECT='./' -f $HOME/src/facephi/Makefile "$@"
       }
     '';
   };
