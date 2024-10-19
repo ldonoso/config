@@ -83,6 +83,13 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
 
+    initExtra = ''
+      # Edit the current comman line in $EDITOR
+      autoload -U edit-command-line
+      zle -N edit-command-line
+      bindkey '\C-x\C-e' edit-command-line
+    '';
+
     oh-my-zsh = {
       enable = true;
       plugins = [ "vi-mode" "direnv" ];
