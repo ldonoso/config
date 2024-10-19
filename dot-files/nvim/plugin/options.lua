@@ -43,10 +43,6 @@ opt.colorcolumn = "100"
 opt.background = "dark"
 opt.termguicolors = true -- enables 24-bit RGB color in the TUI
 
-if vim.fn.has("wsl") == 1 then
-    vim.g.netrw_browsex_viewer = "wslview"
-end
-
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
